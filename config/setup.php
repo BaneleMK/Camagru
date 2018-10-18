@@ -5,7 +5,6 @@
         $conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->exec("DROP DATABASE IF EXISTS " . $DB_NAME);
         $sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
         $conn->exec($sql);
         echo "Connected successfully to database<br>";
@@ -18,9 +17,10 @@
         $sql = "USE $DB_NAME";
         $conn->exec($sql);        
 
-        $sql = "CREATE TABLE users (
+        $sql = "CREATE TABLE IF NOT EXISTS users (
                 id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(30) NOT NULL,
+                password VARCHAR(255) NOT NULL,
                 email VARCHAR(255) NOT NULL,
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL
@@ -29,7 +29,7 @@
         $conn->exec($sql);
         echo "User table created successfully<br>";
 
-        $sql = "CREATE TABLE post (
+        $sql = "CREATE TABLE IF NOT EXISTS post (
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(30) NOT NULL,
             picture TEXT NOT NULL,

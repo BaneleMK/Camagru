@@ -6,18 +6,29 @@
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
 
-    if (empty($username) || empty($password) || empty($email) || empty($firstname) || empty($lastname)){
+    if (empty($username) || empty($_POST['password']) || empty($email) || empty($firstname) || empty($lastname)){
         echo "theres a space missing.<br>";
         die();
     }
     else {
-        echo "phase2<br>";
-        $sql = "INSERT INTO users (username, password, email, firstname, lastname)
-        VALUES ($username, $password, $email, $firstname, $lastname)";
-        echo "phase3<br>";
-        if ($conn->query($sql) === TRUE) {
-            echo "!New record created successfully<br>";
+        try {
+            if ("SELECT COUNT(*) email FROM users WHERE email = $email Limit 1" > 0)
+                echo "found!<br>";
+            }
+            else {
+                echo "Not found!<br>";
+            }
+            $sql = "INSERT INTO users (username, password, email, firstname, lastname) VALUES ('$username', '$password', '$email', '$firstname', '$lastname')";
+            if ($conn->query($sql) === TRUE) {
+                echo "New record created successfully<br>";
+            }
+            else {
+                echo "New record was unsuccessful<br>";
+            }
         }
-        echo "phase4<br>";
+        catch(PDOException $e) {
+            echo "creation failed: " . $e->getMessage() . "<br>";
+        }
+        echo "$username<br>$password<br>$email<br>$firstname<br><br>";
     }
 ?>
