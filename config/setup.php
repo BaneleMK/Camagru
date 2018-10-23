@@ -23,7 +23,8 @@
                 password VARCHAR(255) NOT NULL,
                 email VARCHAR(255) NOT NULL,
                 firstname VARCHAR(30) NOT NULL,
-                lastname VARCHAR(30) NOT NULL
+                lastname VARCHAR(30) NOT NULL,
+                user_state VARCHAR(30) NOT NULL DEFAULT 'offline'
             )";
         
         $conn->exec($sql);
@@ -33,8 +34,7 @@
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(30) NOT NULL,
             picture TEXT NOT NULL,
-            likes INT(10) UNSIGNED,
-            dislikes INT(10) UNSIGNED
+            likes INT(10) UNSIGNED
         )";
     
         $conn->exec($sql);
