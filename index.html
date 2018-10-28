@@ -1,0 +1,88 @@
+<?Php
+
+// bla bla bla
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homepage</title>
+        <style>
+            .form{
+                background-color: white;
+            }
+    
+            .mainbox{
+                display: flex;
+                flex-direction: column;            
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+            }
+            
+            .subbox{
+                border-radius: 5px;
+                border: #25323b solid thin;
+                display: flex;
+                background-color: #FFFFFF;
+                flex-direction: column;
+                width: 80%;
+                height: 800px;
+                align-items: center;
+                justify-content: center;
+                float: left;
+            }
+    
+            nv {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(36, 36, 36);
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+    
+            nvli {
+                float: right;
+            }
+    
+            nvli a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            nvli a:hover {
+                color: red;
+                background-color: white;
+            }
+    
+            .active {
+                color: red;
+                background-color: Black;
+            }
+    
+        </style>
+    </head>
+    <body bgcolor=red>
+        <div class="header" style="text-align: center">
+            <h2>Welcome Back. have at it, the fun to be specific.</h2>
+        </div>
+        <nv>
+            <nvli style="float: left;"><a class=active href="index.html">Home</a></nvli>
+            <nvli><a href="signup.php">sign up</a></nvli>
+            <nvli><a href="login.php">login</a></nvli>
+            <nvli><a href="logout.php">logout</a></nvli>
+            <nvli><a href="profile.php">profile</a></nvli>
+        </nv>
+        <div class="mainbox">
+            <div class="subbox">
+            
+            </div>   
+        </div>
+    </body>
+</html>

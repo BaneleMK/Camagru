@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>sign up</title>
+    <title>login</title>
     <style>
         .form{
             background-color = gray;
@@ -18,7 +18,7 @@
         the other one is POST which does the same except it does not show on the url
         good for stuff like passwords.
     -->
-    <form action="signupinfo.php" method="POST">
+    <form action="log_in_info.php" method="POST">
     <table>
         <tr>
             <td>username:</td>
@@ -29,24 +29,12 @@
             <td><input type="password" name="password" required></td>
         </tr>
         <tr>
-            <td>email:</td>
-            <td><input type="text" name="email" required></td>
-        </tr>
-        <tr>
-            <td>firstname:</td>
-            <td><input type="text" name="firstname" required></td>
-        </tr>
-        <tr>
-            <td>lastname:</td>
-            <td><input type="text" name="lastname" required></td>
-        </tr>
-        <tr>
-            <td><button type="submit" name="submit">Sign up</button></td>
+            <td><button type="submit" name="submit">login</button></td>
         </tr>
     </table>
     </form>
     </div>
     <br/>
-    <a href="login.php">login</a>
+    <a href="signup.php">sign up</a>
 </body>
 </html>
