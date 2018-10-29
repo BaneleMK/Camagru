@@ -1,15 +1,21 @@
+<?php    
+    session_start();
+?>
+
 <html>
 <head>
     <title>sign up</title>
-    <style>
-        .form{
-            background-color = gray;
-        }
-    </style>
+    <link rel="stylesheet" href="mystyles.css">
 </head>
-<body>
+<body bgcolor=red>
+    <nv>
+        <nvli style="float: left;"><a href="index.php">Home</a></nvli>
+        <nvli><a class=active href="signup.php">sign up</a></nvli>
+        <nvli><a href="login.php">login</a></nvli>
 
-    <div class="form">
+    </nv>
+    <div class="mainbox" style="align-items: center; justify-content: center;">
+    <div class="formflexbox">
     <!-- when it comes to methods you have two
 
         one of them is GET which passes the infomation to the php file and makes
@@ -46,7 +52,7 @@
     </table>
     </form>
     </div>
+    </div>
     <br/>
-    <a href="login.php">login</a>
 </body>
 </html>
