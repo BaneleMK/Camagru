@@ -17,14 +17,15 @@ session_start();
             if (!isset($_SESSION['id']))
             {
                 echo '
-                    <nvli><a href="signup.php">sign up</a></nvli>
-                    <nvli><a href="login.php">login</a></nvli>';
+                    <nvli><a href="signup.php">Sign up</a></nvli>
+                    <nvli><a href="login.php">Login</a></nvli>';
             }
             else
             {
+//                <nvli><a href="profile.php">' . $_POST['$username'] . '</a></nvli>';
                 echo '
-                <nvli><a href="logout.php">logout</a></nvli>
-                <nvli><a href="profile.php">profile</a></nvli>';
+                <nvli><a href="logout.php">Logout</a></nvli>
+                <nvli><a href="profile.php">Profile</a></nvli>';
             }
             ?>
         </nv>

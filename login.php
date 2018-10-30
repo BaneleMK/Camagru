@@ -40,6 +40,33 @@
     </table>
     </form>
     </div>
+    <?php
+        if (isset($_GET['login'])) {
+            if ($_GET['login'] == "Error") {
+                echo '
+                <div class="failflexbox">
+                <form action="signupinfo.php" method="POST">
+                <table class=table>
+                    <tr>
+                        <td>incorrect password and/or username.</td>
+                    </tr>
+                </table>
+                </form>
+                </div>';
+            } else if ($_GET['login'] == "empty") {
+                echo '
+                <div class="failflexbox">
+                <form action="signupinfo.php" method="POST">
+                <table class=table>
+                    <tr>
+                        <td>Missing spaces.</td>
+                    </tr>
+                </table>
+                </form>
+                </div>';
+            }
+        }
+    ?>
     </div>
     <br/>
 </body>

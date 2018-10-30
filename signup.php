@@ -25,7 +25,7 @@
         good for stuff like passwords.
     -->
     <form action="signupinfo.php" method="POST">
-    <table>
+    <table class=table>
         <tr>
             <td>username:</td>
             <td><input type="text" name="username" required></td>
@@ -33,6 +33,10 @@
         <tr>
             <td>password:</td>
             <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td>password verification:</td>
+            <td><input type="password" name="password_vr" required></td>
         </tr>
         <tr>
             <td>email:</td>
@@ -52,6 +56,121 @@
     </table>
     </form>
     </div>
+    <?php
+            if (isset($_GET['signup'])) {
+                if ($_GET['signup'] == "email") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Email provided has invalid format.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "pwderror") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Passwords must match.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "empty") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Missing spaces.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "names") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>both first and last names must have only letters.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "username") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Usersnames characters are a-z A-Z 0-9 and underscore \'_\'.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "admin") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Username cant be Admin or admin.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "emailexist") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>email already exists, try another one.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "usernameexist") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>username already exists, try another one.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "faulty") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Something went wrong on oursides, please try again later.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                } else if ($_GET['signup'] == "Successful") {
+                    echo '
+                    <div class="failflexbox">
+                    <form action="signupinfo.php" method="POST">
+                    <table class=table>
+                        <tr>
+                            <td>Account creation was Successful, please verify your account.</td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>';
+                }
+            }
+            ?>
     </div>
     <br/>
 </body>

@@ -13,8 +13,7 @@
         // check for spaces
         if (empty($username) || empty($_POST['password'])){
             header("Location: login.php?login=spaces");
-            //echo "theres a space missing.<br>";
-            //exit ();
+            exit ();
         }
         else {
             /*$sql = "SELECT * FROM users WHERE username='$username'";
