@@ -56,6 +56,22 @@
                 float: left;
                 overflow-y: auto;
             }
+            
+            .passflexbox{
+                border-radius: 5px;
+                margin-top:30px;
+                border: #000000 solid 5px;
+                display: flex;
+                background-color: #77FF77;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 35%;
+                height: 30%;
+                align-items: center;
+                justify-content: center;
+                float: left;
+                overflow-y: auto;
+            }
 
             .picbox{
                 border-radius: 5px;

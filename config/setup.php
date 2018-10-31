@@ -24,7 +24,8 @@
                 email VARCHAR(255) NOT NULL,
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL,
-                user_state VARCHAR(30) NOT NULL DEFAULT 'offline'
+                user_state VARCHAR(30) NOT NULL DEFAULT 'unregistered',
+                verificationcode INT(7) NOT NULL
             )";
         
         $conn->exec($sql);

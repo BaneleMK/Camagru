@@ -7,31 +7,16 @@
         
         //get the login info
         
-        $username = $_POST['username'];
-        $password = hash('whirlpool', $_POST['password']);
-        
+        $email = $_POST['email'];
         // check for spaces
-        if (empty($username) || empty($_POST['password'])){
-            header("Location: login.php?login=spaces");
+        if (empty($method)){
+            header("Location: forgotpassword.php?login=spaces");
             exit ();
-        }
-        else {
-            /*$sql = "SELECT * FROM users WHERE username='$username'";
-            $res = $conn->query($sql);
-            if ($res->rowcount() == 1) {
-                echo "user exists yey<br>";
-                if ($conn->query($sql)['password'] == "$password")
-                    echo "password correct<br>";
-                else
-                    echo "password correct<br>";
-            } else {
-                echo "user does not exist<br>";
-            }*/
-            $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        } else {
+            $query = $conn->prepare("SELECT * FROM users WHERE email='$email'");
             $query->execute();
 
-            $uservalid = 0;
-            for($i=0; $row = $query->fetch(); $i++) {
+            $row = $query->fetch();
                 if ($row['username'] == $username) {
                     if ($row['password'] == $password) {
                         $uservalid = 1;

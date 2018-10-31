@@ -12,7 +12,6 @@
         <nvli style="float: left;"><a href="index.php">Home</a></nvli>
         <nvli><a class=active href="signup.php">sign up</a></nvli>
         <nvli><a href="login.php">login</a></nvli>
-
     </nv>
     <div class="mainbox" style="align-items: center; justify-content: center;">
     <div class="formflexbox">

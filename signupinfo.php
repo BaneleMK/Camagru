@@ -7,6 +7,7 @@
         $email = $_POST['email'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
+        $verificationcode = rand(7,9999999);
 
         if (empty($username) || empty($_POST['password']) || empty($email) || empty($firstname) || empty($lastname)){
             header("Location: signup.php?signup=empty");
@@ -46,7 +47,7 @@
                     exit();
                 }
                 try {
-                    $sql = "INSERT INTO users (username, password, email, firstname, lastname) VALUES ('$username', '$password', '$email', '$firstname', '$lastname')";
+                    $sql = "INSERT INTO users (username, password, email, firstname, lastname, verificationcode) VALUES ('$username', '$password', '$email', '$firstname', '$lastname', '$verificationcode')";
                     if ($conn->query($sql) === FALSE) {
                         echo "New record was unsuccessful<br>";
                     }
@@ -58,15 +59,14 @@
                     header("Location: signup.php?signup=faulty");
                     exit();
                 }
-
                 $email_messaage = "
                 The following link will verify your account and allow you to go online.
-                http://www.Trender.com/verifyemail.php?username=$username&verificationcode=$verificationcode
+               http://localhost:8080/Camagru/email_verification.php?username=$username&verificationcode=$verificationcode
                 ";
                 // Multi.Ordinary.Noob.Develop.Etc MAILINATOR.com
                 mail($email, "Trender - confirm Email", $email_messaage,"From: Trendernoreply.com");
-
             }
+            //http://localhost:8080/Camagru/email_verification.php?username=banex&verificationcode=6326569
             //echo "$username<br>$password<br>$email<br>$firstname<br><br>";
             header("Location: signup.php?signup=Successful");
         }
