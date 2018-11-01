@@ -41,7 +41,7 @@
             }
             
             if ($uservalid == 0) {
-                header("Location: login.php?login=Error");
+                header("Location: login.php?login=userunknown");
                 exit();
             } else {
                 if ($row[$user_state] == 'unregistered') {

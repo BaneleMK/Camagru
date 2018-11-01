@@ -23,89 +23,21 @@
         the other one is POST which does the same except it does not show on the url
         good for stuff like passwords.
     -->
-    <form action="forgotemailinfo.php" method="POST">
+    <form action="forgotpasswordinfo.php" method="POST">
     <table>
         <tr>
             <td>email:</td>
             <td><input type="text" name="email" required></td>
         </tr>
         <tr>
-            <td><button type="submit" name="submit">login</button></td>
+            <td><button type="submit" name="submit">submit</button></td>
         </tr>
     </table>
     </form>
     </div>
-    <?php
-        if (isset($_GET['login'])) {
-            if ($_GET['login'] == "Error") {
-                echo '
-                <div class="failflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>Unknown email.</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            } else if ($_GET['login'] == "unexpectederror") {
-                echo '
-                <div class="failflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>Something went wrong on ourside, please try again. if error persists please contact support.</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            } else if ($_GET['login'] == "empty") {
-                echo '
-                <div class="failflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>Missing spaces.</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            } else if ($_GET['login'] == "Successful") {
-                echo '
-                <div class="passflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>A reset message has been sent to your email</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            } else if ($_GET['login'] == "unregistered") {
-                echo '
-                <div class="failflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>Your account is not verified yet, please check your mail to verify it!</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            } else if ($_GET['login'] == "samepassword") {
-                echo '
-                <div class="failflexbox">
-                <form action="signupinfo.php" method="POST">
-                <table class=table>
-                    <tr>
-                        <td>lol, why are you putting in the same password. might as well keep on using it</td>
-                    </tr>
-                </table>
-                </form>
-                </div>';
-            }
-        }
-    ?>
+        <?php
+            include 'phpboxmessages.php';
+        ?>
     </div>
     <br/>
 </body>

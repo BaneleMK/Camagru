@@ -22,7 +22,7 @@
                 //echo "both first and last names must have only letters<br>";
                 exit();
             } else if (!preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/", $email)) {
-                header("Location: signup.php?signup=email");
+                header("Location: signup.php?signup=invalidemail");
                 //echo "requesting a proper email. if you dont have it...then make it<br>";
                 exit();
             } else if (!preg_match("/^[a-zA-Z_0-9]*$/", $username)) {
@@ -68,7 +68,7 @@
             }
             //http://localhost:8080/Camagru/email_verification.php?username=banex&verificationcode=6326569
             //echo "$username<br>$password<br>$email<br>$firstname<br><br>";
-            header("Location: signup.php?signup=Successful");
+            header("Location: signup.php?signup=Successfulcreation");
         }
     } else {
         header("Location: index.php?");

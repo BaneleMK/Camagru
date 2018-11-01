@@ -6,12 +6,12 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Homepage</title>
+        <title>Profile</title>
         <link rel="stylesheet" href="mystyles.css">        
     </head>
     <body bgcolor=red>
         <nv>
-            <nvli style="float: left;"><a class=active href="index.php">Home</a></nvli>
+            <nvli style="float: left;"><a href="index.php">Home</a></nvli>
             <?php
 
             if (!isset($_SESSION['id']))
@@ -25,17 +25,15 @@ session_start();
 //                <nvli><a href="profile.php">' . $_POST['$username'] . '</a></nvli>';
                 echo '
                 <nvli><a href="logout.php">Logout</a></nvli>
-                <nvli><a href="profile.php">' . $_SESSION['username'] . '</a></nvli>';
+                <nvli><a class=active href="profile.php">' . $_SESSION['username'] . '</a></nvli>';
             }
             ?>
         </nv>
         <div class="mainbox">
             <div class="subbox">
-                <div class="optionbox">
                     
-                </div>
                 <div class="picbox">
-                    
+                    <h1>Profile construction progress</br></br>Its not a joke</h1>
                 </div>
             </div>   
         </div>

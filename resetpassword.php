@@ -24,15 +24,15 @@
         the other one is POST which does the same except it does not show on the url
         good for stuff like passwords.
     -->
-    <form action="log_in_info.php" method="POST">
+    <form action="resetpasswordinfo.php" method="POST">
     <table>
-        <tr>
-            <td>username:</td>
-            <td><input type="text" name="username" required></td>
-        </tr>
         <tr>
             <td>password:</td>
             <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td>repeat password:</td>
+            <td><input type="password_vr" name="password" required></td>
         </tr>
         <tr>
             <td><button type="submit" name="submit">login</button></td>
@@ -41,7 +41,6 @@
     </form>
     </br>
     </br>
-    <a href="forgotpassword.php" name="passord_reset">Forgot password?</a>
     </div>
     <?php
         include 'phpboxmessages.php';

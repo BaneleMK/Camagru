@@ -12,27 +12,18 @@
         $query->execute();
 
         $row = $query->fetch();
-        /*echo $username;
-        echo '<br>';
-        echo $code;
-        echo $row['username'];
-        echo $row['verificationcode'];*/
-        echo "made it here<br>";
-        if ($row['username'] == $username && $row['verificationcode'] == $code) {
-            echo "made it here 1<br>";
-            if ($row['user_status'] == 'registered') {
-                echo "made it here 1.5<br>";
-                header("Location: login.php?login=registered");
+        if ($_POST['password'] != $_POST['password_vr']){
+            header("Location: resetpassword.php?resetpassword=pwderror");
+        } else if ($row['username'] == $username && $row['verificationcode'] == $code) {
+            $newpassword = hash('whirlpool', $_POST['password']);
+            if ($row['password'] == $newpassword ) {
+                header("Location: login.php?login=samepassword");
                 exit();
             } else {
-                echo "made it here 2<br>";
-                $sql = "UPDATE users SET user_state = 'registered' WHERE username = '$username'";
-                echo "made it here 3<br>";
+                $sql = "UPDATE users SET password = '$newpassword', verificationcode = 0 WHERE username = '$username'";
                 $stmt = $conn->prepare($sql);
-                echo "made it here 4<br>";
                 $stmt->execute();
-                echo "made it here 5<br>";
-                header("Location: login.php?login=Successfulverif");
+                header("Location: login.php?login=successfulpwdreset");
                 exit();
             }
         } else {
