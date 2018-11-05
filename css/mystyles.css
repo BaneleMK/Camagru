@@ -1,0 +1,148 @@
+<style>
+            .form{
+                background-color: white;
+            }
+    
+            .mainbox{
+                display: flex;
+                flex-direction: column;            
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+                padding:20px;
+                margin-top:30px;
+            }
+            
+            .subbox{
+                border-radius: 5px;
+                border: #25323b solid thin;
+                display: flex;
+                background-color: #FFFFFF;
+                flex-direction: row;
+                width: 80%;
+                height: 800px;
+                align-items: center;
+                justify-content: center;
+                float: left;
+            }
+
+            .formflexbox{
+                border-radius: 5px;
+                border: #25323b solid thin;
+                display: flex;
+                background-color: #CCCCCC;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 35%;
+                height: 30%;
+                align-items: center;
+                justify-content: center;
+                float: left;
+                overflow-y: auto;
+            }
+
+            .failflexbox{
+                border-radius: 5px;
+                margin-top:30px;
+                border: #000000 solid 5px;
+                display: flex;
+                background-color: #FFFFFF;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 35%;
+                height: 30%;
+                align-items: center;
+                justify-content: center;
+                float: left;
+                overflow-y: auto;
+            }
+            
+            .passflexbox{
+                border-radius: 5px;
+                margin-top:30px;
+                border: #000000 solid 5px;
+                display: flex;
+                background-color: #77FF77;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 35%;
+                height: 30%;
+                align-items: center;
+                justify-content: center;
+                float: left;
+                overflow-y: auto;
+            }
+
+            .picbox{
+                border-radius: 5px;
+                border: #25323b solid thin;
+                display: flex;
+                background-color: #CCCCCC;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 75%;
+                height: 700px;
+                /*align-items: center;
+                justify-content: center;*/
+                float: left;
+            }
+
+            .optionbox{
+                border-radius: 5px;
+                border: #25323b solid thin;
+                display: flex;
+                background-color: #AAAAAA;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 23%;
+                height: 700px;
+                /*align-items: center;
+                justify-content: center;*/
+                float: left;
+            }
+    
+            nv {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(36, 36, 36);
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+    
+            nvli {
+                float: right;
+            }
+    
+            nvli a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            body{
+                font-family: Arial;
+                /*background-image: linear-gradient(gray, white);*/
+            }
+    
+            nvli a:hover {
+                color: red;
+                background-color: white;
+            }
+    
+            .active {
+                color: red;
+                background-color: Black;
+            }
+
+            .table{
+                align-content : center;
+                width: 100%;
+                height: 60%;
+            }
+    
+</style>
