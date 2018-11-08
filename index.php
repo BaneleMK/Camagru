@@ -21,9 +21,9 @@ session_start();
             }
             else
             {
-//                <nvli><a href="profile.php">' . $_POST['$username'] . '</a></nvli>';
                 echo '
                 <nvli><a href="login/logout.php">Logout</a></nvli>
+                <nvli><a href="user/post.php">Post</a></nvli>
                 <nvli><a href="user/profile.php">' . $_SESSION['username'] . '</a></nvli>';
             }
             ?>
