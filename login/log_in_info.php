@@ -32,7 +32,7 @@
                 header("Location: login.php?login=userunknown");
                 exit();
             } else {
-                if ($row[$user_state] == 'unregistered') {
+                if ($row['user_state'] == 'unregistered') {
                     header("Location: login.php?login=unregistered");
                     exit();
                 } else {

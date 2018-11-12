@@ -39,7 +39,20 @@ session_start();
                     
                 </div>
                 <div class="picbox">
-                    
+                    <div class="postflexbox">
+                        <table>
+                            <tr>
+                                <td colspan=2> pic </td>
+                            </tr>
+                            <tr>
+                                <td>by: name </td>
+                            </tr>
+                            <tr>
+                                <td>likes </td>
+                                <td>comments </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>   
         </div>

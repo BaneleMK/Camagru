@@ -33,14 +33,19 @@ session_start();
                 <div class="camtopflexbox">
                     \-CamBooth-/
                 </div>
-
                 <div class="cammidflexbox">
-                    <video id="video">
-                        There was an error in getting the camera feed.<br>
-                    </video>
-                    
+                    <div id="separationflexbox">
+                        <video id="video">
+                            There was an error in getting the camera feed.<br>
+                        </video>
+                    </div>
+                    <div id="separationflexbox">
+                        <form action="uploadpic.php" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="file">
+                            <button type="submit" name="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
-
                 <div class="cambotflexbox">
                     <button id="camshot">take pic</button>
                     <button id="clear">clear pics</button>

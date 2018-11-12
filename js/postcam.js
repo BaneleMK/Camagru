@@ -11,6 +11,8 @@ const camshot = document.getElementById('camshot');
 const photos = document.getElementById('photos');
 const clear = document.getElementById('clear');
 const effect = document.getElementById('effect');
+const upload = document.getElementById('upload');
+const submit = document.getElementById('submit');
 
 //should check promise vs callbacks.
 // the following code is responsible for the webcam working normaly
@@ -67,6 +69,28 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
         video.style.filter = filter;
         effect.selectedIndex = 0;
     }, false)
+
+/*    
+    submit.addEventListener('click', function(event){
+        insertpic();
+
+        event.preventDefault();
+    })
+
+    function insertpic() {
+        console.log('uploading pic');
+        
+        const imgUrl = upload.toDataURL('image/png');
+        console.log(imgUrl); 
+
+        const img = document.createElement('img');
+        img.setAttribute('src', imgUrl);
+        
+        img.style.filter = filter;
+        // this is just adding the image to an array of imgaes
+        photos.appendChild(img);
+    }
+*/
 
     function takepic() {
         console.log('taking pics');            

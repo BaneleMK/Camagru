@@ -4,7 +4,7 @@
         require_once("../config/setup.php");
         $username = $_POST['username'];
         $password = hash('whirlpool', $_POST['password']);
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $verificationcode = rand(7,9999999);
