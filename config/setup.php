@@ -7,10 +7,10 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
         $conn->exec($sql);
-        echo "Connected successfully to database<br>";
+        //echo "Connected successfully to database<br>";
     }
     catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage() . "<br>";
+        //echo "Connection failed: " . $e->getMessage() . "<br>";
     }
 
     try {
@@ -29,7 +29,7 @@
             )";
         
         $conn->exec($sql);
-        echo "User table created successfully<br>";
+        //echo "User table created successfully<br>";
 
         $sql = "CREATE TABLE IF NOT EXISTS posts (
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -39,17 +39,20 @@
             comments INT(10) UNSIGNED DEFAULT 0
         )";
 
+        $conn->exec($sql);
+        //echo "Post table created successfully<br>";
+
         $sql = "CREATE TABLE IF NOT EXISTS comments (
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(30) NOT NULL,
             likes INT(10) UNSIGNED DEFAULT 0,
-            comment VARCHAR NOT NULL 
+            comment VARCHAR(255) NOT NULL 
         )";
     
         $conn->exec($sql);
-        echo "post table created successfully<br>";
+        //echo "comments table created successfully<br>";
     }
     catch(PDOException $e) {
-        echo "Table creation failed: " . $e->getMessage() . "<br>";
+        //echo "Table creation failed: " . $e->getMessage() . "<br>";
     }
 ?>

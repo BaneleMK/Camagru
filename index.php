@@ -39,20 +39,30 @@ session_start();
                     
                 </div>
                 <div class="picbox">
+                <?php
+                    require_once('config/setup.php');
+
+                    $query = $conn->prepare("SELECT * FROM posts");
+                    $query->execute();
+
+                    for ($i = 0; $row = $query->fetch(); $i++) {
+                    echo '
                     <div class="postflexbox">
                         <table>
                             <tr>
-                                <td colspan=2> pic </td>
+                                <td colspan=2><img src="uploads/' . $row['picture'] . '" class="postimages" </td>
                             </tr>
                             <tr>
-                                <td>by: name </td>
+                                <td>@' . $row['username'] . ' </td>
                             </tr>
                             <tr>
-                                <td>likes </td>
-                                <td>comments </td>
+                                <td>' . $row['likes'] . ' Likes</td>
+                                <td>' . $row['comments'] . '<a href="user/comments.php?post=' . $row['id'] . '">' . ' Comments </td>
                             </tr>
                         </table>
-                    </div>
+                    </div>';
+                    }
+                ?>
                 </div>
             </div>   
         </div>

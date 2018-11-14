@@ -2,7 +2,7 @@
     if (isset($_POST['submit'])) {
         try {
             echo "destroy0<br>";
-            require_once("../config/database.php");
+            require_once("../config/setup.php");
             session_start();
 
 
@@ -30,23 +30,9 @@
                     // add to database the user and their image file
                     $username = $_SESSION['username'];
                     echo "$username<br>";
-                    /*echo "destroy8<br>";
-                    $conn->query($sql);
-                    $conn->execute();*/
-                    
                     $sql = "INSERT INTO posts (username, picture) VALUES ('$username', '$image_storage_name')";
-
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->bindParam(":username", $username);
-                    $stmt->bindParam(":picture", $image_storage_name);
-                                    
-                    $username = ;
-                    $picture = ;                 
-                                    
-                    $stmt->execute();
-                                    
-                    $result = $stmt->execute();
-
+                    echo "destroy8<br>";
+                    $conn->query($sql);
                     echo "destroy9<br>";
                     header("location: post.php?success");
                     exit();

@@ -9,7 +9,7 @@ session_start();
         <title>Profile</title>
         <link rel="stylesheet" href="../css/mystyles.css">      
     </head>
-    <body bgcolor=red>
+    <body>
         <nv>
             <nvli style="float: left;"><a href="../index.php">Home</a></nvli>
             <?php
@@ -32,18 +32,17 @@ session_start();
             <div class="subbox" style="flex-direction: column;">
                 <div class="camtopflexbox">
                     \-CamBooth-/
+                    <nvcam id=nvcam>
+                        <nvli style="float: left;"><a id=webcam>webcam</a></nvli>
+                        <nvli><a id=picupload>upload picture</a></nvli>
+                    </nvcam>
                 </div>
                 <div class="cammidflexbox">
-                    <div id="separationflexbox">
+                    <div id="picmethod">
                         <video id="video">
                             There was an error in getting the camera feed.<br>
                         </video>
-                    </div>
-                    <div id="separationflexbox">
-                        <form action="uploadpic.php" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file">
-                            <button type="submit" name="submit">Submit</button>
-                        </form>
+                        
                     </div>
                 </div>
                 <div class="cambotflexbox">

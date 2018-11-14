@@ -4,15 +4,18 @@ let width = 450,
     filter = 'none';
     streaming = false;
 
-// these are DOM elements which i need to check out
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-const camshot = document.getElementById('camshot');
-const photos = document.getElementById('photos');
-const clear = document.getElementById('clear');
-const effect = document.getElementById('effect');
-const upload = document.getElementById('upload');
-const submit = document.getElementById('submit');
+    // these are DOM elements which i need to check out
+    const picmethod = document.getElementById('picmethod');
+    const picupload = document.getElementById('picupload');
+    const webcam = document.getElementById('webcam');
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const camshot = document.getElementById('camshot');
+    const photos = document.getElementById('photos');
+    const clear = document.getElementById('clear');
+    const effect = document.getElementById('effect');
+    const upload = document.getElementById('upload');
+    const submit = document.getElementById('submit');
 
 //should check promise vs callbacks.
 // the following code is responsible for the webcam working normaly
@@ -46,6 +49,27 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
         }
     }, false);
     
+    picupload.addEventListener('click', function(event){
+        console.log('clicked on upload');
+        
+        document.getElementById("picmethod").innerHTML = "<form action=uploadpic.php method=POST enctype=multipart/form-data><input type=file onchange=\"readURL(this)\"name=file><img id=blah src=# alt=image /><button type=submit name=submit>Submit</button></form><script>    function readURL(input) {if (input.files && input.files[0]) {var reader = new FileReader();reader.onload = function (e) {$('#blah').attr('src', e.target.result).width(150).height(200);};reader.readAsDataURL(input.files[0]);}}</script>";
+/*
+        document.getElementById("nvcam").innerHTML = "<nvli style=\"float: left;\"><a id=webcam >webcam</a></nvli><nvli><a id=picupload class=active >upload picture</a></nvli>";
+*/
+        event.preventDefault();
+    }, false);
+    
+    webcam.addEventListener('click', function(event){
+        console.log('clicked on webcam');
+        
+        document.getElementById("picmethod").innerHTML = "<video id=video>There was an error in getting the camera feed.<br></video>";
+/*
+        document.getElementById("nvcam").innerHTML = "<nvli style=\"float: left;\"><a class=active id=webcam>webcam</a></nvli><nvli><a id=picupload>upload picture</a></nvli>";
+*/
+        
+        event.preventDefault();
+    }, false);
+
     camshot.addEventListener('click', function(event){
         takepic();
 
