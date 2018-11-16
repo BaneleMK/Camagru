@@ -1,13 +1,15 @@
     .form{
         background-color: white;
     }
+    
+    /* FLEXBOXES */
     .mainbox{
         display: flex;
         flex-direction: column;            
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
-        padding:20px;
+        padding-top:20px;
         margin-top:30px;
     }
     
@@ -29,7 +31,7 @@
         border: #25323b solid thin;
         display: flex;
         background-color: #CCCCCC;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         width: 35%;
         height: 30%;
@@ -54,7 +56,7 @@
         float: left;
         overflow-y: auto;
     }
-    
+
     .passflexbox{
         border-radius: 5px;
         margin-top:30px;
@@ -86,6 +88,7 @@
         justify-content: center;
         float: left;
     }
+
     .cammidflexbox{
         border-radius: 1px;
         border: #25323b solid thin;
@@ -140,6 +143,7 @@
         align-items: center;
         justify-content: center;
         overflow-y: auto;
+        border-radius: 1px;
         float: left;
     }
 
@@ -153,28 +157,66 @@
         width: 75%;
         height: 900px;
         align-items: center;
-        justify-content: space-around;
-        float: left;
+        justify-content: center;
         overflow-y: auto;
     }
     
-    .postimages{
-        width: 100%;
-        height: 400px;
+    .columnflexbox {
+        align-items: center;
+        justify-content: center;
+        flex: 25%;
+        max-width: 75%;
+        padding: 4px;
+        background-color: rgb(134, 134, 134);
+        overflow-y: auto;
+        height: 900px;
     }
-
+    
     .postflexbox{
         border: #25323b solid thin;
         display: flex;
         padding: 4px;
+        align-items: center;
+        justify-content: center;
         background-color: #FFFFFF;
         flex-direction: column;
         flex-wrap: wrap;
         width: 80%;
-        height: 600px;
         align-items: center;
         float: left;
     }
+    
+    .postflexbox img{
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    .postoptionsflexbox {
+        border: #25323b solid thin;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .postoptionsflexbox options{
+        border-radius: 10px;
+        border: #25323b solid thin;
+        display: flex;
+        background-color: #AAAAAA;
+        width: 30%;
+        text-align: center;
+    }
+
+    @media screen and (min-width: 400px) {
+        flextext{
+        text-align: center;
+        font-size: 15px;
+        }
+      }
 
     .optionbox{
         border-radius: 5px;
@@ -185,8 +227,6 @@
         flex-wrap: wrap;
         width: 23%;
         height: 900px;
-        /*align-items: center;
-        justify-content: center;*/
         float: left;
     }
 
@@ -198,7 +238,7 @@
     }
 
     nv {
-        list-style-type: none;
+        list-style-type:  none;
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -207,6 +247,7 @@
         top: 0;
         width: 100%;
     }
+    
     nvli {
         float: right;
     }
@@ -222,7 +263,7 @@
     body{
         font-family: Arial;
         background-image: linear-gradient(to right, red, maroon);
-        background-size: auto;
+        background-size: 100%;
         /*background-image: linear-gradient(gray, white);*/
     }
 
@@ -240,8 +281,4 @@
         align-content : center;
         width: 95%;
         height: 95%;
-    }
-
-    tr{
-        border: black solid 1px;
     }

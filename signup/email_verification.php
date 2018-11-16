@@ -16,7 +16,7 @@
                 header("Location: ../login/login.php?login=registered");
                 exit();
             } else {
-                $sql = "UPDATE users SET user_state = 'registered' WHERE username = '$username'";
+                $sql = "UPDATE users SET user_state = 'registered', verificationcode = 0 WHERE username = '$username'";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 header("Location: ../login/login.php?login=Successfulverif");

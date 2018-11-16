@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,6 +37,83 @@ session_start();
                     
                 <div class="picbox">
                     <h1>Profile construction progress</br></br>Its not a joke</h1>
+                    <div class="formflexbox" style="width:55%; height:600px; background-color: #FFFFFF">
+                        <form action="profileinfo.php" method="POST">
+                            <hr/>
+                            <table class=table>
+                                <tr>
+                                    <td>new username:</td>
+                                    <td><input type="text" name="newusername" required></td>
+                                </tr>
+                                <tr>
+                                    <td>password:</td>
+                                    <td><input type="password" name="password" required></td>
+                                </tr>
+                                <tr>
+                                    <td><button type="submit" name="submit">SUBMIT</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                        <form action="profileinfo.php" method="POST">
+                            <hr/>
+                            <table class=table>
+                                <tr>
+                                    <td>old password:</td>
+                                    <td><input type="password" name="oldpassword" required></td>
+                                </tr>
+                                <tr>
+                                    <td>new password:</td>
+                                    <td><input type="password" name="newpassword" required></td>
+                                </tr>
+                                <tr>
+                                    <td>new password verification:</td>
+                                    <td><input type="password" name="newpassword_vr" required></td>
+                                </tr>
+                                <tr>
+                                    <td><button type="submit" name="submit">SUBMIT</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                        <form action="profileinfo.php" method="POST">
+                            <hr/>
+                            <table class=table>
+                                <tr>
+                                    <td>new email:</td>
+                                    <td><input type="text" name="newemail" required></td>
+                                </tr>
+                                <tr>
+                                    <td>password:</td>
+                                    <td><input type="password" name="password" required></td>
+                                </tr>
+                                <tr>
+                                    <td><button type="submit" name="submit">SUBMIT</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                        <form action="profileinfo.php" method="POST">
+                            <hr/>
+                            <table class=table>
+                                <tr>
+                                    <td>email comment notification:</td>
+                                    <td>
+                                        <select id="comment notifications">
+                                            <option value="ON">ON</option>
+                                            <option value="OFF">OFF</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><button type="submit" name="submit">SUBMIT</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                        </div>
+                        </div>
+                        <?php
+                            include '../messages/phpboxmessages.php';
+                        ?>
+                        </div>
+                    </div>
                 </div>
             </div>   
         </div>

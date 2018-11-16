@@ -9,7 +9,7 @@ session_start();
         <title>Homepage</title>
         <link rel="stylesheet" href="css/mystyles.css">        
     </head>
-    <body bgcolor=red>
+    <body>
         <nv>
             <nvli style="float: left;"><a class=active href="index.php">Home</a></nvli>
             <?php
@@ -29,41 +29,46 @@ session_start();
             ?>
         </nv>
         <div class="mainbox">
-            <?php
-                if (isset($_GET['redir'])) {
-                    echo '<p>welcome back home</p>';
-                }
-            ?>
             <div class="subbox">
                 <div class="optionbox">
                     
                 </div>
-                <div class="picbox">
-                <?php
-                    require_once('config/setup.php');
+                    <div class="columnflexbox">
+                    <?php
+                        require_once('config/setup.php');
 
-                    $query = $conn->prepare("SELECT * FROM posts");
-                    $query->execute();
+                        $query = $conn->prepare("SELECT * FROM posts");
+                        $query->execute();
 
-                    for ($i = 0; $row = $query->fetch(); $i++) {
-                    echo '
-                    <div class="postflexbox">
-                        <table>
-                            <tr>
-                                <td colspan=2><img src="uploads/' . $row['picture'] . '" class="postimages" </td>
-                            </tr>
-                            <tr>
-                                <td>@' . $row['username'] . ' </td>
-                            </tr>
-                            <tr>
-                                <td>' . $row['likes'] . ' Likes</td>
-                                <td>' . $row['comments'] . '<a href="user/comments.php?post=' . $row['id'] . '">' . ' Comments </td>
-                            </tr>
-                        </table>
-                    </div>';
-                    }
-                ?>
-                </div>
+                        for ($i = 0; $row = $query->fetch(); $i++) {
+                        /*echo '
+                        <div class="postflexbox">
+                            <table>
+                                <tr>
+                                    <td colspan=2><img src="uploads/' . $row['picture'] . '" class="postimages" </td>
+                                </tr>
+                                <tr>
+                                    <td>@' . $row['username'] . ' </td>
+                                </tr>
+                                <tr>
+                                    <td>' . $row['likes'] . ' Likes</td>
+                                    <td>' . $row['comments'] . '<a href="user/comments.php?post=' . $row['id'] . '">' . ' Comments </td>
+                                </tr>
+                            </table>
+                        </div>';
+                        echo '*/
+                        echo '
+                        <div class="postflexbox">
+                                <img src="uploads/' . $row['picture'] . '">
+                                <div class="postoptionsflexbox">
+                                    <options><flextext>' . $row['username'] . ' </flextext></options>
+                                    <options><flextext>' . $row['likes'] . ' Likes</flextext></options>
+                                    <options><flextext>' . $row['comments'] . ' <a href="user/comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
+                                </div>
+                        </div>';
+                        }
+                    ?>
+                    </div>
             </div>   
         </div>
     </body>

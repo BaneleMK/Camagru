@@ -72,6 +72,15 @@ if (isset($_GET['login'])) {
             </tr>
         </table>
         </div>';
+    } else if ($_GET['login'] == "successusernamereset") {
+        echo '
+        <div class="passflexbox">
+        <table class=table>
+            <tr>
+                <td>Your account is now verified!<br/>You may login</td>
+            </tr>
+        </table>
+        </div>';
     } else if ($_GET['login'] == "registered") {
         echo '
         <div class="failflexbox">
@@ -98,6 +107,15 @@ if (isset($_GET['login'])) {
         <table class=table>
             <tr>
                 <td>Passwords must match.</td>
+            </tr>
+        </table>
+        </div>';
+    } else if ($_GET['signup'] == "pwdreq") {
+        echo '
+        <div class="failflexbox">
+        <table class=table>
+            <tr>
+                <td>password needs at least 8 characters must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number (Can contain special characters too) .</td>
             </tr>
         </table>
         </div>';
@@ -155,6 +173,15 @@ if (isset($_GET['login'])) {
             </tr>
         </table>
         </div>';
+    } else if ($_GET['signup'] == "sameusername") {
+        echo '
+        <div class="failflexbox">
+        <table class=table>
+            <tr>
+                <td>New username matches the old one...calmdown and take a breath.</td>
+            </tr>
+        </table>
+        </div>';
     } else if ($_GET['signup'] == "faulty") {
         echo '
         <div class="failflexbox">
@@ -170,6 +197,15 @@ if (isset($_GET['login'])) {
         <table class=table>
             <tr>
                 <td>Account creation was Successful, please verify your account.</td>
+            </tr>
+        </table>
+        </div>';
+    } else if ($_GET['signup'] == "Successfulemail") {
+        echo '
+        <div class="failflexbox">
+        <table class=table>
+            <tr>
+                <td>email change was Successful, please verify and finalise your account.</td>
             </tr>
         </table>
         </div>';
@@ -193,6 +229,25 @@ if (isset($_GET['login'])) {
             </tr>
         </table>
         </div>';
+    } else if ($_GET['reset'] == "successfulemailchange") {
+        echo '
+        <div class="passflexbox">
+        <table class=table>
+            <tr>
+                <td>your email has been changed</td>
+            </tr>
+        </table>
+        </div>';
+    } 
+} else if (isset($_GET['settings'])) {
+    if ($_GET['setting'] == "") {
+        echo '
+        <div class="passflexbox">
+        <table class=table>
+            <tr>
+                <td>Notification settings.</td>
+            </tr>
+        </table>
+        </div>';
     }
 }
-?>

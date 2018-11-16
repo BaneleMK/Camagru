@@ -33,6 +33,10 @@
                 header("Location: signup.php?signup=usernamead");
                 //echo "Username cant be Admin or admin <br>";
                 exit();
+            } else if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/", $_POST['password'])) {
+                header("Location: signup.php?signup=pwdreq");
+                //only strong passwords allowed in this db. thanks to psutton3756;
+                exit();
             } else {
                 $sql = "SELECT COUNT(*) email FROM users WHERE email='$email'";
                 $res = $conn->query($sql);
