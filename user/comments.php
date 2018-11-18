@@ -6,7 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Profile</title>
+        <title>Trender</title>
         <link rel="stylesheet" href="../css/mystyles.css">      
     </head>
     <body bgcolor=red>
@@ -34,7 +34,7 @@ session_start();
                 <div class="picbox">
                 <?php
                     if (isset($_GET['post'])){
-                        require_once('config/setup.php');
+                        require_once('../config/setup.php');
                         
                         $post = $_GET['post'];
 
@@ -46,17 +46,32 @@ session_start();
                         <div class="postflexbox">
                             <table>
                                 <tr>
-                                    <td colspan=2><img src="uploads/' . $row['picture'] . '" class="postimages" </td>
+                                    <td colspan=2><img src="../uploads/' . $row['picture'] . '" class="postimages" </td>
                                 </tr>
                                 <tr>
                                     <td>@' . $row['username'] . ' </td>
                                 </tr>
                                 <tr>
-                                    <td>' . $row['likes'] . ' Likes</td>
-                                    <td>' . $row['comments'] . '<a href="user/comments.php?post=' . $row['id'] . '">' . ' Comments </td>
+                                    <td>' . $row['likes'] . ' <a href="likecommentinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
+                                    <td>' . $row['comments'] . '<a href="comments.php?post=' . $row['id'] . '">' . ' Comments </td>
                                 </tr>
                             </table>
-                        </div>';
+                        </div>
+                        <div class="commentflexbox">
+                                <form action="likecommentinfo.php?post=' . $row['post'] . '&comment " method=POST>
+                                        <table class=table>
+                                                <tr>
+                                                        <td><h3>Comment</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                            <textarea rows="3" cols="50" name="comment" form="usrform" required> hey, say something :D</textarea>
+                                                        </tr>
+                                                        <tr>
+                                                                <td><button type="submit" name="submit" required>post comment</button></td>
+                                                            </tr>
+                                                        </table>
+                                                    </form>
+                                                </div>';
                     } else {
                         header("Location : ../index.php");
                         exit();

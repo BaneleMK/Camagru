@@ -161,6 +161,20 @@
         overflow-y: auto;
     }
     
+    .commentflexbox{
+        border-radius: 5px;
+        border: #25323b solid thin;
+        display: flex;
+        background-color: #FFFFFF;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 90%;
+        height: 170px;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+    }
+
     .columnflexbox {
         align-items: center;
         justify-content: center;
