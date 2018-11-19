@@ -10,7 +10,7 @@
         
         $username = sanitize($_POST['username']);
         $htmlpassword = sanitize($_POST['password']);
-        $password = hash('whirlpool', $_POST['password']);
+        $password = hash('whirlpool', $htmlpassword);
         
         // check for spaces
         if (empty($username) || empty($htmlpassword)) {

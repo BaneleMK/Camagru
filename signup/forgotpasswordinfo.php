@@ -2,11 +2,12 @@
     session_start();
     
     if (isset($_POST['submit'])) {
+        require_once("../functions/sanitize.php");
         require_once("../config/setup.php");
         
         //get the login info
         
-        $email = $_POST['email'];
+        $email = sanitize($_POST['email']);
 
         // check for spaces
         if (empty($email)) {

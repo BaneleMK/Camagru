@@ -4,10 +4,11 @@
     session_start();
     
     require_once("../config/setup.php");
+    require_once("../functions/sanitize.php");
 
     if (isset($_GET['username']) && isset($_GET['verificationcode'])) {
-        $username = $_GET['username'];
-        $code = $_GET['verificationcode'];
+        $username = sanitize($_GET['username']);
+        $code = sanitize($_GET['verificationcode']);
         $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
         $query->execute();
         $row = $query->fetch();

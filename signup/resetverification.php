@@ -1,13 +1,12 @@
-
 <?php
-    require_once("../login/logout.php");    
     session_start();
     
+    include_once("../functions/sanitize.php");
     require_once("../config/setup.php");
 
     if (isset($_GET['username']) && isset($_GET['code'])) {
-        $username = $_GET['username'];
-        $code = $_GET['code'];
+        $username = sanitize($_GET['username']);
+        $code = sanitize($_GET['code']);
         $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
         $query->execute();
         $row = $query->fetch();
@@ -16,7 +15,8 @@
             header("Location: resetpassword.php");
             exit();
         } else {
-            header("Location: ../index.php");
+            session_unset();
+            header("Location: ../index.php?error");
             exit();
         }
     } else {

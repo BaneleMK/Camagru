@@ -180,7 +180,7 @@
         justify-content: center;
         flex: 25%;
         max-width: 75%;
-        padding: 4px;
+        /*padding: 4px;*/
         background-color: rgb(134, 134, 134);
         overflow-y: auto;
         height: 900px;
@@ -233,8 +233,8 @@
       }
 
     .optionbox{
-        border-radius: 5px;
-        border: #25323b solid thin;
+        /*border-radius: 5px;
+        border: #25323b solid thin;*/
         display: flex;
         background-color: #AAAAAA;
         flex-direction: row;

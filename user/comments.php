@@ -55,19 +55,20 @@ if (!isset($_SESSION['username'])) {
                                     <td>@' . $row['username'] . ' </td>
                                 </tr>
                                 <tr>
-                                    <td>' . $row['likes'] . ' <a href="likecommentinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
+                                    <td>' . $row['likes'] . ' <a href="likeinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
                                     <td>' . $row['comments'] . '<a href="comments.php?post=' . $row['id'] . '">' . ' Comments </td>
                                 </tr>
                             </table>
                         </div>
                         <div class="commentflexbox">
-                            <form action="likecommentinfo.php?post=' . $row['post'] . '&comments " method=POST id="usrform">
+                            <form action="commentinfo.php?post=' . $row['post'] . '&comments " method=POST id="usrform">
                                     <table class=table>
                                             <tr>
                                                 <td><h3>Comment</h3></td>
                                             </tr>
                                             <tr>
-                                                <textarea rows="3" cols="50" name="comment" form="usrform" required>Hey, say something :D</textarea>
+                                                <!--<textarea rows="3" cols="50" name="comment" form="usrform" required>Hey, say something :D</textarea>-->
+                                                <input rows="3" cols="50" name="comment" required>Hey, say something :D</textarea>
                                             </tr>
                                             <tr>
                                                <td><button type="submit" name="submit" required>post comment</button></td>

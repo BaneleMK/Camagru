@@ -1,29 +1,27 @@
 
 <?php
-    
     session_start();
     
     require_once("../config/setup.php");
+    require_once("../functions/sanitize.php");
 
     if (isset($_POST['submit'])) {
         $username = $_SESSION['username'];
         $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
         $query->execute();
         $row = $query->fetch();
-        if ($_POST['password'] != $_POST['password_vr']){
+        if (sanitize($_POST['password']) != sanitize($_POST['password_vr'])){
             require_once("../login/logout.php");    
             header("Location: resetpassword.php?signup=pwderror");
         } else {
-            $newpassword = hash('whirlpool', $_POST['password']);
+            $newpassword = hash('whirlpool', sanitize($_POST['password']));
             if ($row['password'] == $newpassword ) {
-                require_once("../login/logout.php");    
-                header("Location: ../login/login.php?login=samepassword");
+                header("Location: resetpassword.php?login=samepassword");
                 exit();
             } else {
-                $sql = "UPDATE users SET password = '$newpassword', verificationcode = 0 WHERE username = '$username'";
+                $sql = "UPDATE users SET password = '$newpassword', verificationcode = 0, user_state = 'registered' WHERE username = '$username'";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
-                require_once("../login/logout.php");    
                 header("Location: ../login/login.php?login=successfulpwdreset");
                 exit();
             }

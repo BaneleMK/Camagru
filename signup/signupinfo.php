@@ -1,5 +1,4 @@
 <?php
-    
     if (isset($_POST['submit'])) {
         require_once("../functions/sanitize.php");
         require_once("../config/setup.php");
