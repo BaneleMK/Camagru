@@ -7,11 +7,11 @@
         
         //get the login info
         
-        $username = $_POST['username'];
-        $password = hash('whirlpool', $_POST['password']);
+        $username = htmlspecialchars("$_POST['username']");
+        $password = hash('whirlpool', $_POST['password']));
         
         // check for spaces
-        if (empty($username) || empty($_POST['password'])){
+        if (empty($username) || empty(htmlspecialchars("$_POST['password']"))) {
             header("Location: login.php?login=spaces");
             exit ();
         }
@@ -41,7 +41,6 @@
                     $_SESSION['fistname'] = $row['fistname'];
                     $_SESSION['lastname'] = $row['lastname'];
                     $_SESSION['email'] = $row['email'];
-                    //echo "user exists and is available <br>";
                     header("Location: ../index.php?login=Successful");
                     exit();
                 }

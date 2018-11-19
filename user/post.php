@@ -1,7 +1,10 @@
 <?php
 
 session_start();
-
+if (!isset($_SESSION['username'])) {
+    header("Location: ../login/login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +68,6 @@ session_start();
                     
                     </div>
                 </div>
-
                 <script src="../js/postcam.js"></script>
             </div>   
         </div>
