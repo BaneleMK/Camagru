@@ -25,6 +25,7 @@
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL,
                 user_state VARCHAR(30) NOT NULL DEFAULT 'unregistered',
+                comment_notifications VARCHAR(4) NOT NULL DEFAULT 'YES',
                 verificationcode INT(7) NOT NULL
             )";
         
@@ -44,15 +45,23 @@
 
         $sql = "CREATE TABLE IF NOT EXISTS comments (
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            postid INT(7) UNSIGNED NOT NULL,
             username VARCHAR(30) NOT NULL,
-            likes INT(10) UNSIGNED DEFAULT 0,
             comment VARCHAR(255) NOT NULL 
         )";
     
         $conn->exec($sql);
         //echo "comments table created successfully<br>";
+
+        $sql = "CREATE TABLE IF NOT EXISTS likes (
+            postid INT(7) UNSIGNED NOT NULL,
+            username VARCHAR(30) NOT NULL
+        )";
+    
+        $conn->exec($sql);
+        //echo "likes table created successfully<br>";
     }
     catch(PDOException $e) {
-        //echo "Table creation failed: " . $e->getMessage() . "<br>";
+        echo "Table creation failed: " . $e->getMessage() . "<br>";
     }
 ?>

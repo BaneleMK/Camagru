@@ -4,18 +4,19 @@
     
     if (isset($_POST['submit'])) {
         require_once("../config/setup.php");
+        include_once("../functions/sanitize.php");
         
         //get the login info
         
-        $username = htmlspecialchars("$_POST['username']");
-        $password = hash('whirlpool', $_POST['password']));
+        $username = sanitize($_POST['username']);
+        $htmlpassword = sanitize($_POST['password']);
+        $password = hash('whirlpool', $_POST['password']);
         
         // check for spaces
-        if (empty($username) || empty(htmlspecialchars("$_POST['password']"))) {
+        if (empty($username) || empty($htmlpassword)) {
             header("Location: login.php?login=spaces");
             exit ();
-        }
-        else {
+        } else {
             $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
             $query->execute();
 

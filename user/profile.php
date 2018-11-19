@@ -36,7 +36,6 @@ if (!isset($_SESSION['username'])) {
             <div class="subbox">
                     
                 <div class="picbox">
-                    <h1>Profile construction progress</br></br>Its not a joke</h1>
                     <div class="formflexbox" style="width:55%; height:600px; background-color: #FFFFFF">
                         <form action="profileinfo.php" method="POST">
                             <hr/>

@@ -61,20 +61,32 @@ if (!isset($_SESSION['username'])) {
                             </table>
                         </div>
                         <div class="commentflexbox">
-                                <form action="likecommentinfo.php?post=' . $row['post'] . '&comment " method=POST>
-                                        <table class=table>
-                                                <tr>
-                                                        <td><h3>Comment</h3></td>
-                                                    </tr>
-                                                    <tr>
-                                                            <textarea rows="3" cols="50" name="comment" form="usrform" required> hey, say something :D</textarea>
-                                                        </tr>
-                                                        <tr>
-                                                                <td><button type="submit" name="submit" required>post comment</button></td>
-                                                            </tr>
-                                                        </table>
-                                                    </form>
-                                                </div>';
+                            <form action="likecommentinfo.php?post=' . $row['post'] . '&comments " method=POST id="usrform">
+                                    <table class=table>
+                                            <tr>
+                                                <td><h3>Comment</h3></td>
+                                            </tr>
+                                            <tr>
+                                                <textarea rows="3" cols="50" name="comment" form="usrform" required>Hey, say something :D</textarea>
+                                            </tr>
+                                            <tr>
+                                               <td><button type="submit" name="submit" required>post comment</button></td>
+                                           </tr>
+                                    </table>
+                            </form>
+                        </div>';
+
+                        $query = $conn->prepare("SELECT * FROM comments WHERE postid = $post");
+                        $query->execute();
+
+                        echo '
+                        <div class="commentflexbox" style="height:650">';
+                        while ($row = $query->fetch()) {
+                            echo '<div class="commentflexbox" style="height:50px ; width=90%;background-color: #EEEEEE;">
+                        ' . $row['username'] . ': ' . $row['comment'] . '
+                            </div>';
+                        }
+                        echo '</div>';
                     } else {
                         header("Location : ../index.php");
                         exit();

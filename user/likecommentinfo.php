@@ -28,13 +28,11 @@
                 $stmt->execute();        
                 header("Location: ../index.php?workslike");
                 exit();
-            } else if (isset($_GET['comment'])) {
-                $comment = $_POST['comment'];
-
-                $sql = "INSERT INTO comments (postid, username, comment) VALUES ($postid, '$username', '$comment')";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
+            } else if (isset($_GET['comments'])) {
+                //$comment = $_POST['comment'];
+                $comment = "is the comment the issue";
+                //$conn->query("INSERT INTO likes (postid, username) VALUES ($postid, '$username')");
+                $conn->query("INSERT INTO comments (username, postid, comment) VALUES ('$username', $postid, '$comment')");
                 header("Location: ../index.php?workscomm");
                 exit();
             }

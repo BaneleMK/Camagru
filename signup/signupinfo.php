@@ -1,19 +1,26 @@
 <?php
     
     if (isset($_POST['submit'])) {
+        require_once("../functions/sanitize.php");
         require_once("../config/setup.php");
-        $username = $_POST['username'];
-        $password = hash('whirlpool', $_POST['password']);
-        $email = strtolower($_POST['email']);
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
+
+        $normpassword = sanitize($_POST['password']);
+        $normpassword_vr = sanitize($_POST['password_vr']);
+        
+        $username = sanitize($_POST['username']);
+        $password = hash('whirlpool', $normpassword);
+        $email = strtolower(sanitize($_POST['email']));
+
+        $firstname = sanitize($_POST['firstname']);
+        $lastname = sanitize($_POST['lastname']);
+
         $verificationcode = rand(7,9999999);
 
-        if (empty($username) || empty($_POST['password']) || empty($email) || empty($firstname) || empty($lastname)){
+        if (empty($username) || empty($normpassword) || empty($email) || empty($firstname) || empty($lastname)){
             header("Location: signup.php?signup=empty");
             //echo "theres a space missing.<br>";
             exit ();
-        } else if ($_POST['password'] != $_POST['password_vr']){
+        } else if ($normpassword != $normpassword_vr){
             header("Location: signup.php?signup=pwderror");
         }
         else {
