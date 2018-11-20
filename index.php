@@ -30,9 +30,9 @@ session_start();
         </nv>
         <div class="mainbox">
             <div class="subbox">
-                <div class="optionbox">
+                <!--<div class="optionbox">
                     
-                </div>
+                </div>-->
                     <div class="columnflexbox">
                     <?php
                         require_once('config/setup.php');
@@ -41,22 +41,6 @@ session_start();
                         $query->execute();
 
                         for ($i = 0; $row = $query->fetch(); $i++) {
-                        /*echo '
-                        <div class="postflexbox">
-                            <table>
-                                <tr>
-                                    <td colspan=2><img src="uploads/' . $row['picture'] . '" class="postimages" </td>
-                                </tr>
-                                <tr>
-                                    <td>@' . $row['username'] . ' </td>
-                                </tr>
-                                <tr>
-                                    <td>' . $row['likes'] . ' Likes</td>
-                                    <td>' . $row['comments'] . '<a href="user/comments.php?post=' . $row['id'] . '">' . ' Comments </td>
-                                </tr>
-                            </table>
-                        </div>';
-                        echo '*/
                         echo '
                         <div class="postflexbox">
                                 <img src="uploads/' . $row['picture'] . '">

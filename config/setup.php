@@ -43,11 +43,11 @@
         $conn->exec($sql);
         //echo "Post table created successfully<br>";
 
-        $sql = "CREATE TABLE IF NOT EXISTS comments (
+        $sql = "CREATE TABLE IF NOT EXISTS user_comments (
             id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             postid INT(7) UNSIGNED NOT NULL,
             username VARCHAR(30) NOT NULL,
-            comment VARCHAR(255) NOT NULL 
+            comment_text VARCHAR(255) NOT NULL 
         )";
     
         $conn->exec($sql);
