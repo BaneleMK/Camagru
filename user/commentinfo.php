@@ -10,16 +10,17 @@
             $comment_text = sanitize($_POST['comment_text']);
 
             //insert the comment
-            echo $postid . '<br>' . $username . '<br>' . $comment_text . '<br>';
+            //echo $postid . '<br>' . $username . '<br>' . $comment_text . '<br>';
             $sql = "INSERT INTO user_comments (username, comment_text, postid) VALUES ('$username', '$comment_text', '$postid')";
             $conn->query($sql);
 
             //get current comment num and add one to it
-            $query = $conn->prepare("SELECT comments FROM posts WHERE id = $postid");
+            $query = $conn->prepare("SELECT * FROM posts WHERE id = $postid");
             $query->execute();
             $row = $query->fetch();
 
             $newcomments = $row['comments'] + 1;
+            $postusername = $row['username'];
 
             $sql = "UPDATE posts SET comments = $newcomments WHERE id = $postid";
             $stmt = $conn->prepare($sql);
@@ -27,24 +28,28 @@
 
             //inform the user if its notification is on
 
-            $sql = $conn->prepare("SELECT * FROM users WHERE username = '$username'");
-            $conn->query($sql)
+            $query = $conn->prepare("SELECT * FROM users WHERE username = '$postusername'");
+            $query->execute();
             $row = $query->fetch();
 
-            if ($row['comment_notifications'] == 'YES') {
+            $email = $row['email'];
+            if ($row['comment_notifications'] != 'OFF') {
                 //if its on send an email notifying
 
                 $email_messaage = "
-                One of your posts received a comment. Check it out with the link below.
+                One of your posts received a comment from the legend $username.
+                Check it out with the link below.
                 ---------
-                http://localhost:8080/Camagru/user/comments/post=$postid
+                http://localhost:8080/Camagru/user/comments.php?post=$postid
                 ---------";
 
-                mail($row['email'], "Trender - new comment on post", $email_messaage,"From: Trendernoreply.com");
-            }
+                mail($email, "Trender - new comment on post", $email_messaage,"From: Trendernoreply.com");
 
-            header("Location: comments.php?post=" . $postid);
+                header("Location: comments.php?post=" . $postid . "&emailwentto=$email");
+                exit();
+            }header("Location: comments.php?post=" . $postid);
             exit();
+            
         } catch (PDOException $e) {
             echo "failed: " . $e->getMessage() . "<br>";
         }

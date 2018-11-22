@@ -96,10 +96,29 @@ if (!isset($_SESSION['username'])) {
                                 <tr>
                                     <td>email comment notification:</td>
                                     <td>
-                                        <select id="comment notifications">
-                                            <option value="ON">ON</option>
-                                            <option value="OFF">OFF</option>
-                                        </select>
+                                        <?php
+                                            require_once("../config/setup.php");
+                                            $username = $_SESSION['username'];
+                                            $query = $conn->prepare("SELECT * FROM users WHERE username ='$username'");
+                                            $query->execute();
+                                            $row = $query->fetch();
+
+                                            echo 'current status: '. $row['comment_notifications'];
+
+                                            if ($row['comment_notifications'] != 'OFF') {
+                                                echo '
+                                                    <select name="comment_notifications">
+                                                        <option value="ON">ON</option>
+                                                        <option value="OFF">OFF</option>
+                                                    </select>';
+                                            } else {
+                                                echo '
+                                                    <select name="comment_notifications">
+                                                        <option value="OFF">OFF</option>
+                                                        <option value="ON">ON</option>
+                                                    </select>';
+                                            }
+                                        ?>
                                     </td>
                                 </tr>
                                 <tr>

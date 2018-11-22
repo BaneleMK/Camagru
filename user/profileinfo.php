@@ -115,9 +115,9 @@
             header("Location: profile.php?login=Successfulemail");
             exit();
         }
-    } else if (isset($_POST['comment notifications'])) {
+    } else if (isset($_POST['comment_notifications'])) {
         $username = $_SESSION['username'];
-        $mode = $_POST['comment notifications'];
+        $mode = $_POST['comment_notifications'];
 
         $sql = "UPDATE users SET comment_notifications = '$mode' WHERE username = '$username'";
         $stmt = $conn->prepare($sql);

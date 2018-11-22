@@ -25,7 +25,7 @@
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL,
                 user_state VARCHAR(30) NOT NULL DEFAULT 'unregistered',
-                comment_notifications VARCHAR(4) NOT NULL DEFAULT 'YES',
+                comment_notifications VARCHAR(4) NOT NULL DEFAULT 'ON',
                 verificationcode INT(7) NOT NULL
             )";
         
