@@ -177,7 +177,6 @@
 
     .columnflexbox {
         align-items: center;
-        justify-content: center;
         flex: 25%;
         max-width: 75%;
         /*padding: 4px;*/
