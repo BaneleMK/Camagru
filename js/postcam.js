@@ -48,17 +48,19 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
             console.log('canplay done');            
         }
     }, false);
-    
+
     picupload.addEventListener('click', function(event){
         console.log('clicked on upload');
         
-        document.getElementById("picmethod").innerHTML = "<form action=uploadpic.php method=POST enctype=multipart/form-data><input type=file onchange=\"readURL(this)\"name=file><img id=blah src=# alt=image /><button type=submit name=submit>Submit</button></form><script>    function readURL(input) {if (input.files && input.files[0]) {var reader = new FileReader();reader.onload = function (e) {$('#blah').attr('src', e.target.result).width(150).height(200);};reader.readAsDataURL(input.files[0]);}}</script>";
+        document.getElementById("picmethod").innerHTML = "<input type=file name=file><button type=submit name=submit>Submit</button>";
+
+        //document.getElementById("picmethod").innerHTML = "<input type=file onchange=displaypreview(this)name=file><img id=blah src=# alt=image /><button type=submit name=submit>Submit image</button></form>";
 /*
         document.getElementById("nvcam").innerHTML = "<nvli style=\"float: left;\"><a id=webcam >webcam</a></nvli><nvli><a id=picupload class=active >upload picture</a></nvli>";
 */
         event.preventDefault();
     }, false);
-    
+
     webcam.addEventListener('click', function(event){
         console.log('clicked on webcam');
         
@@ -141,8 +143,25 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
         }
     }
 
-/*
-<script>
+    
+    
+    /*
+    function displaypreview(input) {
+
+        for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+            
+            var file = e.originalEvent.srcElement.files[i];
+            
+            var img = document.createElement("img");
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                 img.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+            $input.after(img);
+        }
+    }, false);
+    <script>
 
 try {
     function(stream){

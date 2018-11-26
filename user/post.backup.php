@@ -42,23 +42,11 @@ if (!isset($_SESSION['username'])) {
                     </nvcam>
                 </div>
                 <div class="cammidflexbox">
-                    <div class="separationflexbox">
-                    <form action=uploadpic.php id=submitform method=POST enctype=multipart/form-data>
-                        <div id="picmethod">
-                            <video id="video">
-                                There was an error in getting the camera feed.<br>
-                            </video>
-                        </div>
-                    </div>
-                    <div class="separationflexbox">
-                        <div class="stickerflexbox">
-                        <select name="sticker" form=submitform>
-                            <option value="none">pick any sticker</option>
-                            <option value="../Resources/cat.jpg">cat</option>
-                            <option value="../Resources/blackcat.jpg">blackcat</option>
-                            <option value="../Resources/100_natural.jpg">100% Natural</option>
-                        </select>
-                        </div>
+                    <div id="picmethod">
+                        <video id="video">
+                            There was an error in getting the camera feed.<br>
+                        </video>
+                        
                     </div>
                 </div>
                 <div class="cambotflexbox">
@@ -71,8 +59,8 @@ if (!isset($_SESSION['username'])) {
                         <option value="invert(100%)">invert</option>
                         <option value="blur(5px)">blur</option>
                     </select>
-                    </form>
                 </div>
+
                 <div class="campicflexbox">
                     <canvas id="canvas" style="display:none;">
                     

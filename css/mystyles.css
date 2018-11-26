@@ -94,7 +94,7 @@
         border: #25323b solid thin;
         display: flex;
         background-color: #CCCCCC;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         width: 90%;
         height: 500px;
@@ -108,9 +108,23 @@
         border: #000 solid thin;
         display: flex;
         background-color: #FFFFFF;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 48%;
+        height: 500px;
+        align-items: center;
+        justify-content: center;
+        float: left;
+    }
+    
+    .stickerflexbox{
+        border-radius: 1px;
+        border: #000 solid thin;
+        display: flex;
+        background-color: #FFFFFF;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 50%;
+        width: 100%;
         height: 500px;
         align-items: center;
         justify-content: center;
