@@ -1,28 +1,28 @@
 <?php
-    
-    echo 0;
     session_start();
-    echo 1;
-
     if (isset($_SESSION['id'], $_GET['post'], $_GET['user'])) {
         try {
-            echo 2;
             require_once("../config/setup.php");
             $username = $_GET['user'];
             $postid = $_GET['post'];
             echo $username;
 
             $sql = "SELECT * FROM posts WHERE id = $postid AND username = '$username'";
-            $result = $conn->query($sql);
+            $query = $conn->prepare($sql);
+            $query->execute();
+
+            $result = $query->fetch();
             echo '4.0';
-            if ($result->fetchcolumn() > 0) {
-                echo '4.1';
-                /*unlink("../upload/" . "$result['picture']");*/
+            if (isset($result['picture'])) {
+                echo 'picture';
+                $picture = "../upload/" . $result['picture'];
+                echo $picture . "<br>";
+                unlink($picture);
                 $sql = "DELETE FROM posts WHERE id = $postid AND username = '$username'";
                 echo '5';
                 $conn->query($sql);
-                header("Location: viewposts.php?itisdone");
-                exit();
+                //header("Location: viewposts.php?itisdone");
+                //exit();
             } else {
                 echo '4.2';
                 header("Location: viewposts.php?nopostexists");

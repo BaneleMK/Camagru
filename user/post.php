@@ -45,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                     <div class="separationflexbox">
                     <form action=uploadpic.php id=submitform method=POST enctype=multipart/form-data>
                         <div id="picmethod">
-                            <video id="video">
+                            <video id="video" name=file>
                                 There was an error in getting the camera feed.<br>
                             </video>
                         </div>
@@ -54,9 +54,14 @@ if (!isset($_SESSION['username'])) {
                         <div class="stickerflexbox">
                         <select name="sticker" form=submitform>
                             <option value="none">pick any sticker</option>
-                            <option value="../Resources/cat.jpg">cat</option>
-                            <option value="../Resources/blackcat.jpg">blackcat</option>
-                            <option value="../Resources/100_natural.jpg">100% Natural</option>
+                            <option value="../Resources/heart_off.png">black heart</option>
+                            <option value="../Resources/Sansdad.png">skelly</option>
+                            <option value="../Resources/facefurr.png">facefurr</option>
+                            <option value="../Resources/BIGSALE.png">BIGSALE</option>
+                            <option value="../Resources/VeryAngrtBird.png">Angrybird</option>
+                            <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
+                            <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
+                            <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
                         </select>
                         </div>
                     </div>
