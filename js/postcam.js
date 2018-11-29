@@ -16,6 +16,7 @@ let width = 450,
     const effect = document.getElementById('effect');
     const upload = document.getElementById('upload');
     const submit = document.getElementById('submit');
+    const base64img = document.getElementById("base64imglink");
 
 //should check promise vs callbacks.
 // the following code is responsible for the webcam working normaly
@@ -89,34 +90,12 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
 
     // this is for clearing images and everything
     clear.addEventListener('click', function(event) {
-        console.log('hey i cleared')
+        console.log('hey i cleared');
         photos.innerHTML = '';
         filter = 'none';
         video.style.filter = filter;
         effect.selectedIndex = 0;
     }, false)
-
-/*    
-    submit.addEventListener('click', function(event){
-        insertpic();
-
-        event.preventDefault();
-    })
-
-    function insertpic() {
-        console.log('uploading pic');
-        
-        const imgUrl = upload.toDataURL('image/png');
-        console.log(imgUrl); 
-
-        const img = document.createElement('img');
-        img.setAttribute('src', imgUrl);
-        
-        img.style.filter = filter;
-        // this is just adding the image to an array of imgaes
-        photos.appendChild(img);
-    }
-*/
 
     function takepic() {
         console.log('taking pics');            
@@ -132,45 +111,15 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
             context.drawImage(video, 0, 0, width, height);
 
             const imgUrl = canvas.toDataURL('image/png');
-            console.log(imgUrl); 
+            console.log(imgUrl);
+            base64img.value = imgUrl;
             const img = document.createElement('img');
 
             img.setAttribute('src', imgUrl);
             
             img.style.filter = filter;
+            img.src = "../uploads/1.png";
             // this is just adding the image to an array of imgaes
-            photos.appendChild(img);
+            //photos.appendChild(img);
         }
     }
-
-    
-    
-    /*
-    function displaypreview(input) {
-
-        for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
-            
-            var file = e.originalEvent.srcElement.files[i];
-            
-            var img = document.createElement("img");
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                 img.src = reader.result;
-            }
-            reader.readAsDataURL(file);
-            $input.after(img);
-        }
-    }, false);
-    <script>
-
-try {
-    function(stream){
-        camvideo.srcObject();
-    }
-} catch {
-    function(error){
-        console.log('Error occured at try ' + $(error));
-    }
-}
-
-</script>*/

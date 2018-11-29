@@ -1,24 +1,27 @@
 <?php
     if (isset($_POST['submit'])) {
         try {
-            //echo "destroy0<br>";
             require_once("../config/setup.php");
             session_start();
 
-            $file = $_FILES['file'];
-            //echo "destroy<br>";
-            $filename = $_FILES['file']['name'];
-            $filetmplocation = $_FILES['file']['tmp_name'];
-            $filesize = $_FILES['file']['size'];
-            $fileerror = $_FILES['file']['error'];
-            //echo "destroy2<br>";
+            echo 'one';
+            if (isset($_FILES['file'])) {
+                echo '2';
+                $file = $_FILES['file'];
+                $filename = $_FILES['file']['name'];
+                $filetmplocation = $_FILES['file']['tmp_name'];
+                $filesize = $_FILES['file']['size'];
+                $fileerror = $_FILES['file']['error'];
 
-            $explodedname = explode('.', $filename);
-            $import_file_ext = end($explodedname);
-            //echo "destroy3<br>";
-            $file_ext = array('png', 'jpeg', 'jpg');
-            //echo "destroy4<br>";
-
+                $explodedname = explode('.', $filename);
+                $import_file_ext = end($explodedname);
+                $file_ext = array('png', 'jpeg', 'jpg');
+            } else if ($_TEXT['webcampic'] != 'empty') {
+                echo '3';
+                echo base64_decode($_TEXT['webcampic']);
+            } else {
+                echo 'what are you doing here?';
+            }
             if ($_POST['sticker'] == 'none') {
                 //echo 'not none...anything but none';
                 exit();
@@ -58,12 +61,9 @@
                     //echo "destroy6<br>";
                     // add to database the user and their image file
                     $username = $_SESSION['username'];
-                    //echo "$username<br>";
                     $sql = "INSERT INTO posts (username, picture) VALUES ('$username', '$image_storage_name')";
-                    //echo "destroy8<br>";
                     $conn->query($sql);
-                    //echo "destroy9<br>";
-                    //header("location: post.php?success");
+                    header("location: post.php?success");
                     exit();
                 } else {
                     //echo "file is too large";

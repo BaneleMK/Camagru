@@ -1,11 +1,3 @@
-<?php
-
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../login/login.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,22 +7,10 @@ if (!isset($_SESSION['username'])) {
     <body>
         <nv>
             <nvli style="float: left;"><a href="../index.php">Home</a></nvli>
-            <?php
-            if (!isset($_SESSION['id']))
-            {
-                echo '
-                    <nvli><a href="../signup/signup.php">Sign up</a></nvli>
-                    <nvli><a href="../login/login.php">Login</a></nvli>';
-            }
-            else
-            {
-                echo '
                 <nvli><a href="../login/logout.php">Logout</a></nvli>
                 <nvli><a class=active href="post.php">Post</a></nvli>
                 <nvli><a href="viewposts.php">View Posts</a></nvli>
-                <nvli><a href="profile.php">' . $_SESSION['username'] . '</a></nvli>';
-            }
-            ?>
+                <nvli><a href="profile.php">blabla</a></nvli>';
         </nv>
         <div class="mainbox">
             <div class="subbox" style="flex-direction: column;">
@@ -48,6 +28,7 @@ if (!isset($_SESSION['username'])) {
                             <video id="video" name=file>
                                 There was an error in getting the camera feed.<br>
                             </video>
+                            <canvas id=uplcanvas></canvas>
                         </div>
                     </div>
                     <div class="separationflexbox">
@@ -58,7 +39,7 @@ if (!isset($_SESSION['username'])) {
                             <option value="../Resources/Sansdad.png">skelly</option>
                             <option value="../Resources/facefurr.png">facefurr</option>
                             <option value="../Resources/BIGSALE.png">BIGSALE</option>
-                            <option value="../Resources/VeryAngrtBird.png">Angrybird</option>
+                            <option value="../Resources/VeryAngryBird.png">Angrybird</option>
                             <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
                             <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
                             <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
@@ -76,18 +57,22 @@ if (!isset($_SESSION['username'])) {
                         <option value="invert(100%)">invert</option>
                         <option value="blur(5px)">blur</option>
                     </select>
+                    </form>
                 </div>
                 <div class="campicflexbox">
-                    <input type=text name=webcampic id=base64imglink value="empty" style="display:none;">
-                    <canvas id="canvas"><!-- style="display:none;">-->
+                    <!--
+                        <canvas id="canvas" style="display:none;">
+
+                        </canvas>
+                        <div id="photos">
+
+                        </div>
+                    -->
+                    <canvas id="canvas">
                     
                     </canvas>
-                    <!--<div id="photos">
-                    
-                    </div>-->
                 </div>
                 <script src="../js/postcam.js"></script>
-            </form>
             </div>   
         </div>
     </body>
