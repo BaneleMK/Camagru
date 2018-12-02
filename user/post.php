@@ -62,23 +62,24 @@ if (!isset($_SESSION['username'])) {
                             <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
                             <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
                             <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
-                        </select>
+                        </select>                        
                         </div>
                     </div>
                 </div>
                 <div class="cambotflexbox">
                     <button id="camshot">take pic</button>
-                    <button id="clear">clear pics</button>
+                    <!--<button id="clear">clear pics</button>
                     <select id="effect">
                         <option value="none">normal</option>
                         <option value="grayscale(100%)">grayscale</option>
                         <option value="sepia(100%)">sepia</option>
                         <option value="invert(100%)">invert</option>
                         <option value="blur(5px)">blur</option>
-                    </select>
+                    </select>-->
+                    <button id="submit" type=submit name="submit">submit</button>
                 </div>
                 <div class="campicflexbox">
-                    <input type=text name=webcampic id=base64imglink value="empty" style="display:none;">
+                    <input type=text name=webcampic id=base64imglink value="empty"><!-- style="display:none;">-->
                     <canvas id="canvas"><!-- style="display:none;">-->
                     
                     </canvas>
