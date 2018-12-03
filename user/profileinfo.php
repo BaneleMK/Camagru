@@ -61,20 +61,18 @@
             $stmt = $conn->prepare($sql);
             $stmt->execute();
 
-            /* if it comes to it we need to change every other user entry to match the new one 
-             mock up code
-                $sql = "UPDATE post SET username = '$newusername' WHERE username = '$username'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute(); 
-            
-                $sql = "UPDATE likes SET username = '$newusername' WHERE username = '$username'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute(); 
-            
-                $sql = "UPDATE comments SET username = '$newusername' WHERE username = '$username'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute(); 
-            */
+            // if it comes to it we need to change every other user entry to match the new one mock up code
+            $sql = "UPDATE posts SET username = '$newusername' WHERE username = '$username'";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(); 
+        
+            $sql = "UPDATE likes SET username = '$newusername' WHERE username = '$username'";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(); 
+        
+            $sql = "UPDATE user_comments SET username = '$newusername' WHERE username = '$username'";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(); 
 
             require_once("../login/logout.php");
             header("Location: ../login/login.php?signup=successusernamereset");
