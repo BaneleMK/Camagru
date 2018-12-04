@@ -42,7 +42,7 @@ if (!isset($_SESSION['username'])) {
                         
                         $post = $_GET['post'];
 
-                        $query = $conn->prepare("SELECT * FROM posts WHERE id = $post");
+                        $query = $conn->prepare("SELECT * FROM posts WHERE id = $post ");
                         $query->execute();
 
                         $row = $query->fetch();
@@ -56,7 +56,7 @@ if (!isset($_SESSION['username'])) {
                                     <td>@' . $row['username'] . ' </td>
                                 </tr>
                                 <tr>
-                                    <td>' . $row['likes'] . ' <a href="likeinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
+                                    <td>' . $row['likes'] . ' <img href="likeinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
                                     <td>' . $row['comments'] . '<a href="comments.php?post=' . $row['id'] . '">' . ' Comments </td>
                                 </tr>
                             </table>
@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
                                     <table class=table>
                                             <tr>
                                                 <td><h3>Comment</h3></td>
-                                                <td><textarea rows="3" cols="50" name="comment_text" form="commentform" required>Hey, say something :D (max chars:255)</textarea></td>
+                                                <td><textarea rows="3" cols="50" name="comment_text" form="commentform" required placeholder="Hey, say something :D (max chars:255)"></textarea></td>
                                             </tr>
                                             <tr>
                                                <td><button type="submit" name="submit" required>post comment</button></td>

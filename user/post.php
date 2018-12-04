@@ -58,7 +58,7 @@ if (!isset($_SESSION['username'])) {
                             <option value="../Resources/Sansdad.png">skelly</option>
                             <option value="../Resources/facefurr.png">facefurr</option>
                             <option value="../Resources/BIGSALE.png">BIGSALE</option>
-                            <option value="../Resources/VeryAngrtBird.png">Angrybird</option>
+                            <option value="../Resources/VeryAngryBird.png">Angrybird</option>
                             <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
                             <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
                             <option value="../Resources/Christmasf3.png">Christmas frame 3</option>

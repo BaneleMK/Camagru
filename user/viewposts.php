@@ -13,18 +13,15 @@ session_start();
         <nv>
             <nvli style="float: left;"><a href="../index.php">Home</a></nvli>
             <?php
-            if (!isset($_SESSION['id']))
-            {
+            if (!isset($_SESSION['id'])) {
                 echo '
                     <nvli><a href="../signup/signup.php">Sign up</a></nvli>
                     <nvli><a href="../login/login.php">Login</a></nvli>';
-            }
-            else
-            {
+            } else {
                 echo '
                 <nvli><a href="../login/logout.php">Logout</a></nvli>
                 <nvli><a href="post.php">Post</a></nvli>
-                <nvli><a class=active href="user/viewposts.php">View Posts</a></nvli>
+                <nvli><a class=active href="viewposts.php">View Posts</a></nvli>
                 <nvli><a href="profile.php">' . $_SESSION['username'] . '</a></nvli>';
             }
             ?>
@@ -49,7 +46,7 @@ session_start();
                                 <div class="postoptionsflexbox">
                                     <options><flextext>' . $row['username'] . ' </flextext></options>
                                     <options><flextext>' . $row['likes'] . ' Likes</flextext></options>
-                                    <options><flextext>' . $row['comments'] . ' <a href="user/comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
+                                    <options><flextext>' . $row['comments'] . ' <a href="comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
                                 </div>
                                 <div class="postoptionsflexbox">
                                     <flextext><a href="deletepostinfo.php?post=' . $row['id'] . '&user=' . $user . '">DELETE POST</a></flextext>
