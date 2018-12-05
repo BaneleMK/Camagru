@@ -72,10 +72,10 @@ session_start();
 
                         echo '
                             <div class="postoptionsflexbox">
-                                <options><flextext><a href=index.php?page=0>"<<-"</a></flextext></options>
-                                <options><flextext><a href=index.php?page=' . $page - 1 . '>"<-"</a></flextext></options>
+                                <options><flextext><a href=index.php?page=0>First</a></flextext></options>
+                                <options><flextext><a href=index.php?page=' . ($page - 1) . '>Back</a></flextext></options>
                                 <options><flextext>' . $page . '</flextext></options>
-                                <options><flextext><a href=index.php?page=' . $page + 1 . '>">"</a></flextext></options>
+                                <options><flextext><a href=index.php?page=' . ($page + 1) . '>next</a></flextext></options>
                             </div>';
 
                         /*for ($i = 0; ; $i++) {

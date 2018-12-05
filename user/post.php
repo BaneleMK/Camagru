@@ -52,7 +52,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
                     <div class="separationflexbox">
                         <div class="stickerflexbox">
-                        <select name="sticker" form=submitform>
+                        <select name="sticker0" form=submitform>
                             <option value="none">pick any sticker</option>
                             <option value="../Resources/heart_off.png">black heart</option>
                             <option value="../Resources/Sansdad.png">skelly</option>
@@ -62,7 +62,29 @@ if (!isset($_SESSION['username'])) {
                             <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
                             <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
                             <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
-                        </select>                        
+                        </select>
+                        <select name="sticker1" form=submitform>
+                            <option value="none">pick any sticker</option>
+                            <option value="../Resources/heart_off.png">black heart</option>
+                            <option value="../Resources/Sansdad.png">skelly</option>
+                            <option value="../Resources/facefurr.png">facefurr</option>
+                            <option value="../Resources/BIGSALE.png">BIGSALE</option>
+                            <option value="../Resources/VeryAngryBird.png">Angrybird</option>
+                            <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
+                            <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
+                            <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
+                        </select>
+                        <select name="sticker2" form=submitform placeholder="hey pick any">
+                            <option value="none">pick any sticker</option>
+                            <option value="../Resources/heart_off.png">black heart</option>
+                            <option value="../Resources/Sansdad.png">skelly</option>
+                            <option value="../Resources/facefurr.png">facefurr</option>
+                            <option value="../Resources/BIGSALE.png">BIGSALE</option>
+                            <option value="../Resources/VeryAngryBird.png">Angrybird</option>
+                            <option value="../Resources/Christmasf1.png">Christmas frame 1</option>
+                            <option value="../Resources/Christmasf2.png">Christmas frame 2</option>
+                            <option value="../Resources/Christmasf3.png">Christmas frame 3</option>
+                        </select>
                         </div>
                     </div>
                 </div>
