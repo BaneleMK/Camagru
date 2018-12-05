@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Profile</title>
+        <title>Trender-Profile</title>
         <link rel="stylesheet" href="../css/mystyles.css">      
     </head>
     <body bgcolor=red>

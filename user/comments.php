@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Trender</title>
+        <title>Trender-comments</title>
         <link rel="stylesheet" href="../css/mystyles.css">      
     </head>
     <body bgcolor=red>

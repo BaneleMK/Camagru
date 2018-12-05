@@ -6,7 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Homepage</title>
+        <title>Trender-Gallery</title>
         <link rel="stylesheet" href="css/mystyles.css">        
     </head>
     <body>
@@ -40,18 +40,55 @@ session_start();
 
                         $query = $conn->prepare("SELECT * FROM posts");
                         $query->execute();
+                        $row = $query->fetchAll();
 
-                        for ($i = 0; $row = $query->fetch(); $i++) {
+                        // $postnumber = the amount of posts per pagination
+                        if (isset($_GET['page'])){
+                            if ($_GET['page'] < 0)
+                                $page = 0;
+                            else
+                                $page = $_GET['page'];
+                        }
+                        else
+                            $page = 0;
+
+                        $postnumber = 5;
+
+                        $startat = $page * $postnumber;
+
+                        $totalposts = sizeof($row);
+                        // cp = currentpage
+                        for ($cp = $startat; ($cp < ($startat + 5)) && ($cp < $totalposts); $cp++) {
+                            echo '
+                            <div class="postflexbox">
+                                    <img src="uploads/' . $row[$cp]['picture'] . '">
+                                    <div class="postoptionsflexbox">
+                                        <options><flextext>' . $row[$cp]['username'] . ' </flextext></options>
+                                        <options><flextext>' . $row[$cp]['likes'] . ' <a href="user/likeinfo.php?post=' . $row['id'] . '&like ">Likes</a></options>
+                                        <options><flextext>' . $row[$cp]['comments'] . ' <a href="user/comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
+                                    </div>
+                            </div>';    
+                        }
+
+                        echo '
+                            <div class="postoptionsflexbox">
+                                <options><flextext><a href=index.php?page=0>"<<-"</a></flextext></options>
+                                <options><flextext><a href=index.php?page=' . $page - 1 . '>"<-"</a></flextext></options>
+                                <options><flextext>' . $page . '</flextext></options>
+                                <options><flextext><a href=index.php?page=' . $page + 1 . '>">"</a></flextext></options>
+                            </div>';
+
+                        /*for ($i = 0; ; $i++) {
                         echo '
                         <div class="postflexbox">
-                                <img src="uploads/' . $row['picture'] . '">
+                                <img src="uploads/' . $row[]['picture'] . '">
                                 <div class="postoptionsflexbox">
                                     <options><flextext>' . $row['username'] . ' </flextext></options>
                                     <options><flextext>' . $row['likes'] . ' <a href="user/likeinfo.php?post=' . $row['id'] . '&like ">Likes</a></options>
                                     <options><flextext>' . $row['comments'] . ' <a href="user/comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
                                 </div>
                         </div>';
-                        }
+                        }*/
                     ?>
                     </div>
             </div>   

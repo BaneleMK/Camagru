@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>sign up</title>
+    <title>Trender-sign up</title>
     <link rel="stylesheet" href="../css/mystyles.css">
 </head>
 <body bgcolor=red>

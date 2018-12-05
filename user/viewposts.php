@@ -6,7 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Homepage</title>
+        <title>Trender-MyPosts</title>
         <link rel="stylesheet" href="../css/mystyles.css">        
     </head>
     <body>

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>login</title>
+    <title>Trender-ForgotPassword</title>
     <link rel="stylesheet" href="../css/mystyles.css">
 </head>
 <body bgcolor=red>
