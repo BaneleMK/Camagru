@@ -4,7 +4,7 @@
             require_once("../config/setup.php");
             session_start();
 
-            echo 'one';
+            //echo 'one';
             $webcamimage = 0;
             if (isset($_FILES['file'])) {
                 echo '2';

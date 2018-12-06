@@ -56,7 +56,7 @@ if (!isset($_SESSION['username'])) {
                                     <td>@' . $row['username'] . ' </td>
                                 </tr>
                                 <tr>
-                                    <td>' . $row['likes'] . ' <img href="likeinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
+                                    <td>' . $row['likes'] . ' <a href="likeinfo.php?post=' . $_GET['post'] . '&like ">Likes</a></td>
                                     <td>' . $row['comments'] . '<a href="comments.php?post=' . $row['id'] . '">' . ' Comments </td>
                                 </tr>
                             </table>

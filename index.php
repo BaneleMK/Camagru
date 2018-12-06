@@ -64,8 +64,8 @@ session_start();
                                     <img src="uploads/' . $row[$cp]['picture'] . '">
                                     <div class="postoptionsflexbox">
                                         <options><flextext>' . $row[$cp]['username'] . ' </flextext></options>
-                                        <options><flextext>' . $row[$cp]['likes'] . ' <a href="user/likeinfo.php?post=' . $row['id'] . '&like ">Likes</a></options>
-                                        <options><flextext>' . $row[$cp]['comments'] . ' <a href="user/comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
+                                        <options><flextext>' . $row[$cp]['likes'] . ' <a href="user/likeinfo.php?post=' . $row[$cp]['id'] . '&like ">Likes</a></options>
+                                        <options><flextext>' . $row[$cp]['comments'] . ' <a href="user/comments.php?post=' . $row[$cp]['id'] . '">Comments</a></flextext></options>
                                     </div>
                             </div>';    
                         }

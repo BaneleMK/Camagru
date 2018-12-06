@@ -35,12 +35,13 @@ session_start();
                     <?php
                         require_once('../config/setup.php');
 
-                        $query = $conn->prepare("SELECT * FROM posts");
+                        $user = $_SESSION['username'];
+                        $query = $conn->prepare("SELECT * FROM posts WHERE username = '$user'");
                         $query->execute();
                         $row = $query->fetchAll();
 
                         // $postnumber = the amount of posts per pagination
-                        if (isset($_GET['page'])){
+                        if (isset($_GET['page'])) {
                             if ($_GET['page'] < 0)
                                 $page = 0;
                             else
@@ -58,11 +59,12 @@ session_start();
                         for ($cp = $startat; ($cp < ($startat + 5)) && ($cp < $totalposts); $cp++) {
                             echo '
                             <div class="postflexbox">
-                                    <img src="uploads/' . $row[$cp]['picture'] . '">
+                                    <img src="../uploads/' . $row[$cp]['picture'] . '">
                                     <div class="postoptionsflexbox">
                                         <options><flextext>' . $row[$cp]['username'] . ' </flextext></options>
-                                        <options><flextext>' . $row[$cp]['likes'] . ' <a href="likeinfo.php?post=' . $row['id'] . '&like ">Likes</a></options>
-                                        <options><flextext>' . $row[$cp]['comments'] . ' <a href="comments.php?post=' . $row['id'] . '">Comments</a></flextext></options>
+                                        <options><flextext>' . $row[$cp]['likes'] . ' <a href="likeinfo.php?post=' . $row[$cp]['id'] . '&like ">Likes</a></options>
+                                        <options><flextext>' . $row[$cp]['comments'] . ' <a href="comments.php?post=' . $row[$cp]['id'] . '">Comments</a></flextext></options>
+                                        <options><flextext><a href="deletepostinfo.php?post=' . $row[$cp]['id'] . '&user=' . $row[$cp]['username'] . '">DELETE POST</a></flextext></options>
                                     </div>
                             </div>';    
                         }
