@@ -35,7 +35,7 @@
             echo "failed: " . $e->getMessage() . "<br>";
         }
     } else {
-        header("Location: ../index.php?notlogged");
+        header("Location: ../login/login.php?");
         exit();
     }
 

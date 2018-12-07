@@ -4,7 +4,7 @@
             require_once("../config/setup.php");
             session_start();
 
-            //echo 'one';
+            // echo 'one';
             $webcamimage = 0;
             if (isset($_FILES['file'])) {
                 echo '2';
@@ -18,16 +18,14 @@
                 $import_file_ext = end($explodedname);
                 $file_ext = array('png', 'jpeg', 'jpg');
             } else if ($_POST['webcampic'] != 'empty') {
-                echo '3<br>';
+                $webcamimage = 1;
                 $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['webcampic']));
                 $import_file_ext = 'png';
-                $image_storage_name = uniqid('', true) . '.' . $import_file_ext;
-                $filetmplocation = "../uploads/" . uniqid('', true) . '.' . $import_file_ext;
-                //$filetmplocation = "$image_storage_name";
+                $image_storage_name = "../uploads/" . uniqid('', true) . '.' . $import_file_ext;
+                $filetmplocation = "$image_storage_name";
                 file_put_contents($filetmplocation, $data);
                 $filedest = realpath($filetmplocation);
                 echo $filedest . "<br><br>" . $image_storage_name . "<br><br>". $filetmplocation . "<br><br>";
-                $webcamimage = 1;
             } else {
                 echo 'what are you doing here?';
                 exit();

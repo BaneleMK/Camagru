@@ -45,21 +45,21 @@ session_start();
                         // $postnumber = the amount of posts per pagination
                         $postnumber = 5;
                         $totalposts = sizeof($row);
-                        $startat = $page * $postnumber;
-
+                        
                         if (isset($_GET['page'])){
                             if ($_GET['page'] < 0)
-                                $page = 0;
+                            $page = 0;
                             else {
                                 if ($page * $postnumber > $totalposts)
-                                    $page = ($_GET['page'] - 1);
+                                $page = ($_GET['page'] - 1);
                                 else
-                                    $page = $_GET['page'];
+                                $page = $_GET['page'];
                             }
                         }
                         else
-                            $page = 0;
-                            
+                        $page = 0;
+                        
+                        $startat = $page * $postnumber;
                         // cp = currentpage
                         for ($cp = $startat; ($cp < ($startat + 5)) && ($cp < $totalposts); $cp++) {
                             echo '

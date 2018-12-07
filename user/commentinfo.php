@@ -7,10 +7,16 @@
         try {
             $postid = sanitize($_GET['post']);
             $username = sanitize($_SESSION['username']);
-            $comment_text = sanitize($_POST['comment_text']);
+            $comment_text = substr(trim(sanitize($_POST['comment_text'])), 0, 255);
+
+            if ($postid == '') {
+                header("Location: ../index.php?");
+                exit();
+            }
 
             //insert the comment
             //echo $postid . '<br>' . $username . '<br>' . $comment_text . '<br>';
+            
             $sql = "INSERT INTO user_comments (username, comment_text, postid) VALUES ('$username', '$comment_text', '$postid')";
             $conn->query($sql);
 
@@ -44,16 +50,14 @@
                 ---------";
 
                 mail($email, "Trender - new comment on post", $email_messaage,"From: Trendernoreply.com");
-
-                header("Location: comments.php?post=" . $postid . "&emailwentto=$email");
-                exit();
-            }header("Location: comments.php?post=" . $postid);
+            }
+            header("Location: comments.php?post=" . $postid);
+            echo 'madeit';
             exit();
-            
         } catch (PDOException $e) {
             echo "failed: " . $e->getMessage() . "<br>";
         }
     } else {
-        header("Location: ../index.php?notlogged");
+        header("Location: ../login/login.php?");
         exit();
     } 

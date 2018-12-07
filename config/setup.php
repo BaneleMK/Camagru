@@ -5,7 +5,7 @@
         $conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
+        $sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;";
         $conn->exec($sql);
         //echo "Connected successfully to database<br>";
     }
@@ -27,7 +27,7 @@
                 user_state VARCHAR(30) NOT NULL DEFAULT 'unregistered',
                 comment_notifications VARCHAR(4) NOT NULL DEFAULT 'ON',
                 verificationcode INT(7) NOT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;";
         
         $conn->exec($sql);
         //echo "User table created successfully<br>";
@@ -38,7 +38,7 @@
             picture TEXT NOT NULL,
             likes INT(10) UNSIGNED DEFAULT 0,
             comments INT(10) UNSIGNED DEFAULT 0
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;";
 
         $conn->exec($sql);
         //echo "Post table created successfully<br>";
@@ -48,7 +48,7 @@
             postid INT(7) UNSIGNED NOT NULL,
             username VARCHAR(30) NOT NULL,
             comment_text VARCHAR(255) NOT NULL 
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;";
     
         $conn->exec($sql);
         //echo "comments table created successfully<br>";
@@ -56,7 +56,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS likes (
             postid INT(7) UNSIGNED NOT NULL,
             username VARCHAR(30) NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;";
     
         $conn->exec($sql);
         //echo "likes table created successfully<br>";
