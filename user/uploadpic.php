@@ -21,8 +21,9 @@
                 echo '3<br>';
                 $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['webcampic']));
                 $import_file_ext = 'png';
-                $image_storage_name = "../uploads/" . uniqid('', true) . '.' . $import_file_ext;
-                $filetmplocation = "$image_storage_name";
+                $image_storage_name = uniqid('', true) . '.' . $import_file_ext;
+                $filetmplocation = "../uploads/" . uniqid('', true) . '.' . $import_file_ext;
+                //$filetmplocation = "$image_storage_name";
                 file_put_contents($filetmplocation, $data);
                 $filedest = realpath($filetmplocation);
                 echo $filedest . "<br><br>" . $image_storage_name . "<br><br>". $filetmplocation . "<br><br>";

@@ -41,20 +41,23 @@ session_start();
                         $row = $query->fetchAll();
 
                         // $postnumber = the amount of posts per pagination
-                        if (isset($_GET['page'])) {
+                        $postnumber = 5;
+                        $totalposts = sizeof($row);
+                        $startat = $page * $postnumber;
+
+                        if (isset($_GET['page'])){
                             if ($_GET['page'] < 0)
                                 $page = 0;
-                            else
-                                $page = $_GET['page'];
+                            else {
+                                if ($page * $postnumber > $totalposts)
+                                    $page = ($_GET['page'] - 1);
+                                else
+                                    $page = $_GET['page'];
+                            }
                         }
                         else
                             $page = 0;
 
-                        $postnumber = 5;
-
-                        $startat = $page * $postnumber;
-
-                        $totalposts = sizeof($row);
                         // cp = currentpage
                         for ($cp = $startat; ($cp < ($startat + 5)) && ($cp < $totalposts); $cp++) {
                             echo '
@@ -71,10 +74,10 @@ session_start();
 
                         echo '
                             <div class="postoptionsflexbox">
-                                <options><flextext><a href=../index.php?page=0>First</a></flextext></options>
-                                <options><flextext><a href=../index.php?page=' . ($page - 1) . '>Back</a></flextext></options>
+                                <options><flextext><a href=viewposts.php?page=0>First</a></flextext></options>
+                                <options><flextext><a href=viewposts.php?page=' . ($page - 1) . '>Back</a></flextext></options>
                                 <options><flextext>' . $page . '</flextext></options>
-                                <options><flextext><a href=../index.php?page=' . ($page + 1) . '>next</a></flextext></options>
+                                <options><flextext><a href=viewposts.php?page=' . ($page + 1) . '>next</a></flextext></options>
                             </div>';
 
                         /*for ($i = 0; ; $i++) {
