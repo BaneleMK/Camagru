@@ -6,7 +6,7 @@
             $username = $_GET['user'];
             $postid = $_GET['post'];
 
-            $sql = "SELECT * FROM posts WHERE id = $postid AND username = '$username'";
+            $sql = "SELECT * FROM posts WHERE id = $postid AND username = '$username' ORDER BY id DESC";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
 

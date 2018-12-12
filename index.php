@@ -38,7 +38,7 @@ session_start();
                     <?php
                         require_once('config/setup.php');
 
-                        $query = $conn->prepare("SELECT * FROM posts");
+                        $query = $conn->prepare("SELECT * FROM posts ORDER BY id DESC");
                         $query->execute();
                         $row = $query->fetchAll();
 

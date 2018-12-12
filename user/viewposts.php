@@ -36,7 +36,7 @@ session_start();
                         require_once('../config/setup.php');
 
                         $user = $_SESSION['username'];
-                        $stmt = $conn->prepare("SELECT * FROM posts WHERE username = '$user'");
+                        $stmt = $conn->prepare("SELECT * FROM posts WHERE username = '$user' ORDER BY id DESC");
                         $stmt->execute();
                         $row = $stmt->fetchAll();
 

@@ -31,10 +31,7 @@
                 exit();
             } 
             echo 'three<br>';
-            if ($_POST['sticker0'] == 'none' && $_POST['sticker1'] == 'none' && $_POST['sticker3'] == 'none') {
-                header("Location: ../user/post.php?upload=sticker");
-                exit();
-            } else if ($webcamimage == 1 || in_array($import_file_ext, $file_ext)) {
+            if ($webcamimage == 1 || in_array($import_file_ext, $file_ext)) {
                 if ($webcamimage == 1 || $filesize <= 10000000) {
                     if ($webcamimage == 0) {
                         $image_storage_name = uniqid('', true) . '.' . $import_file_ext;
