@@ -27,12 +27,12 @@
                 $filedest = realpath($filetmplocation);
                 echo $filedest . "<br><br>" . $image_storage_name . "<br><br>". $filetmplocation . "<br><br>";
             } else {
-                echo 'what are you doing here?';
+                header("Location: ../user/post.php?upload=picture");
                 exit();
             } 
             echo 'three<br>';
             if ($_POST['sticker0'] == 'none' && $_POST['sticker1'] == 'none' && $_POST['sticker3'] == 'none') {
-                header("Location: ../user/post.php?nosticker");
+                header("Location: ../user/post.php?upload=sticker");
                 exit();
             } else if ($webcamimage == 1 || in_array($import_file_ext, $file_ext)) {
                 if ($webcamimage == 1 || $filesize <= 10000000) {
@@ -101,29 +101,30 @@
                     header("content-type: image/png");
                     imagepng($image, $filedest);
 
-                    //unlink($filedest); 
-                    /*if ($webcamimage == 1) {
-                        unlink($filetmplocation);
-                    }*/
-                    //echo "destroy6<br>";
                     // add to database the user and their image file
                     
                     $username = $_SESSION['username'];
                     $sql = "INSERT INTO posts (username, picture) VALUES ('$username', '$image_storage_name')";
-                    $conn->query($sql);
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+                    
                     header("location: post.php?success");
                     exit();
                 } else {
-                    echo "file is too large";
+                    header("Location: post.php?upload=size");
+                    exit();
                 }
             } else {
-                echo "not a valid file extension";
+                header("Location: post.php?upload=ext");
+                exit();
             }
         } catch (PDOException $e){
-            echo $e->getMessage();
+            header("Location: post.php?error");
+            exit();
+            //echo $e->getMessage();
         }
     } else {
-        header("Location: ../user/post.php?failed");
+        header("Location: ../index.php?");
         exit();
     }
 ?>

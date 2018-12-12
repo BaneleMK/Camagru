@@ -250,4 +250,42 @@ if (isset($_GET['login'])) {
         </table>
         </div>';
     }
+} else if (isset($_GET['upload'])) {
+    if ($_GET['upload'] == "picture") {
+        echo '
+        <div class="tipflexbox">
+        <table class=table>
+            <tr>
+                <td>Please take a picture before you Submit. Thanks you bud</td>
+            </tr>
+        </table>
+        </div>';
+    } else if ($_GET['upload'] == "size") {
+        echo '
+        <div class="tipflexbox">
+        <table class=table>
+            <tr>
+                <td>ahh...sorry but this file is too big. 10Mb is all i can handle</td>
+            </tr>
+        </table>
+        </div>';
+    } else if ($_GET['upload'] == "sticker") {
+        echo '
+        <div class="tipflexbox">
+        <table class=table>
+            <tr>
+                <td>Please select a sticker to go with that awesome pic, thanks/td>
+            </tr>
+        </table>
+        </div>';
+    } else if ($_GET['upload'] == "size") {
+        echo '
+        <div class="tipflexbox">
+        <table class=table>
+            <tr>
+                <td>ahh...sorry but this file is too big. 10Mb is all i can handle</td>
+            </tr>
+        </table>
+        </div>';
+    }
 }

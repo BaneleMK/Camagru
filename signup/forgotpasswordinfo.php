@@ -18,9 +18,9 @@
                 header("Location: forgotpassword.php?reset=invalidemail");
                 exit();
             }
-            $query = $conn->prepare("SELECT * FROM users WHERE email='$email'");
-            $query->execute();
-            $row = $query->fetch();
+            $stmt = $conn->prepare("SELECT * FROM users WHERE email='$email'");
+            $stmt->execute();
+            $row = $stmt->fetch();
             
             if ($row['email'] != '$email') {
                 if ($row[$user_state] == 'unregistered') {

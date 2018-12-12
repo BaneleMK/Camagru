@@ -17,11 +17,11 @@
             header("Location: login.php?login=spaces");
             exit ();
         } else {
-            $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-            $query->execute();
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+            $stmt->execute();
 
             $uservalid = 0;
-            for($i=0; $row = $query->fetch(); $i++) {
+            for($i=0; $row = $stmt->fetch(); $i++) {
                 if ($row['username'] == $username) {
                     if ($row['password'] == $password) {
                         $uservalid = 1;

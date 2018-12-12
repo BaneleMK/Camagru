@@ -99,9 +99,9 @@ if (!isset($_SESSION['username'])) {
                                         <?php
                                             require_once("../config/setup.php");
                                             $username = $_SESSION['username'];
-                                            $query = $conn->prepare("SELECT * FROM users WHERE username ='$username'");
-                                            $query->execute();
-                                            $row = $query->fetch();
+                                            $stmt = $conn->prepare("SELECT * FROM users WHERE username ='$username'");
+                                            $stmt->execute();
+                                            $row = $stmt->fetch();
 
                                             echo 'current status: '. $row['comment_notifications'];
 

@@ -6,9 +6,9 @@
 
     if (isset($_POST['newpassword'])) {
         $username = $_SESSION['username'];
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
         if ($_POST['newpassword'] != $_POST['newpassword_vr']){
             header("Location: profile.php?signup=pwderror");
             exit();
@@ -37,9 +37,9 @@
         $newusername = $_POST['newusername'];
         $newpassword = hash('whirlpool', $_POST['password']);
 
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
         
         if ($newpassword != $row['password']) {
             header("Location: profile.php?signup=pwderror");
@@ -52,11 +52,14 @@
             exit();
         } else {
             $sql = "SELECT COUNT(*) username FROM users WHERE username='$newusername'";
-            $res = $conn->query($sql);
+            $res = $conn->prepare($sql);
+            $stmt->execute();
+
             if ($res->fetchColumn() > 0) {
                 header("Location: profile.php?signup=usernameexist");
                 exit();
             }
+
             $sql = "UPDATE users SET username = '$newusername' WHERE username = '$username'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -83,9 +86,9 @@
         $newemail = $_POST['newemail'];
         $newpassword = hash('whirlpool', $_POST['password']);
 
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
 
         if ($newpassword != $row['password']) {
             header("Location: profile.php?signup=pwderror");
@@ -95,7 +98,9 @@
             exit();
         } else {
             $sql = "SELECT COUNT(*) email FROM users WHERE email='$newemail'";
-            $res = $conn->query($sql);
+            $res = $conn->prepare($sql);
+            $res->execute();
+
             if ($res->fetchColumn() > 0) {
                 header("Location: profile.php?signup=emailexist");
                 exit();

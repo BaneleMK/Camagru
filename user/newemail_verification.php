@@ -9,9 +9,9 @@
         $username = $_GET['username'];
         $code = $_GET['verificationcode'];
         $newemail = $_GET['email'];
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
         if ($row['username'] == $username && $row['verificationcode'] == $code) {
             $sql = "UPDATE users SET email = '$newemail', verificationcode = 0 WHERE username = '$username'";
             $stmt = $conn->prepare($sql);

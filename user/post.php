@@ -10,7 +10,8 @@ if (!isset($_SESSION['username'])) {
 <html>
     <head>
         <title>Trender-post</title>
-        <link rel="stylesheet" href="../css/mystyles.css">      
+        <link rel="stylesheet" href="../css/mystyles.css">   
+        <meta charset="UTF-8">   
     </head>
     <body>
         <nv>
@@ -129,13 +130,13 @@ if (!isset($_SESSION['username'])) {
                     <button id="submit" type=submit name="submit">submit</button>
                 </div>
                 <div class="campicflexbox">
-                    <input type=text name=webcampic id=base64imglink value="empty"><!-- style="display:none;">-->
+                    <input type=text name=webcampic id=base64imglink value="empty" style="display:none;">
                     <canvas id="canvas"><!-- style="display:none;">-->
                     
                     </canvas>
-                    <!--<div id="photos">
-                    
-                    </div>-->
+                    <?php
+                        include '../messages/phpboxmessages.php';
+                    ?>
                 </div>
                 <script src="../js/postcam.js"></script>
             </form>

@@ -7,16 +7,18 @@
             $postid = $_GET['post'];
 
             $sql = "SELECT * FROM posts WHERE id = $postid AND username = '$username'";
-            $query = $conn->prepare($sql);
-            $query->execute();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
-            $result = $query->fetch();
+            $result = $stmt->fetch();
             if (isset($result['picture'])) {
-                $picture = "../uploadS/" . $result['picture'];
+                $picture = "../uploads/" . $result['picture'];
                 unlink($picture);
 
                 $sql = "DELETE FROM posts WHERE id = $postid AND username = '$username'";
-                $conn->query($sql);
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+
                 header("Location: viewposts.php?itisdone");
                 exit();
             } else {
@@ -24,7 +26,9 @@
                 exit();
             }
         } catch (PDOException $e) {
-            echo "failed: " . $e->getMessage() . "<br>";
+            //echo "failed: " . $e->getMessage() . "<br>";
+            header("Location: viewposts.php?nopostexists&error");
+            exit();
         }
     } else {
         header("Location: ../login/login.php");

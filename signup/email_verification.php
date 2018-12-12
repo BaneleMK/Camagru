@@ -1,4 +1,3 @@
-
 <?php
     
     session_start();
@@ -9,9 +8,9 @@
     if (isset($_GET['username']) && isset($_GET['verificationcode'])) {
         $username = sanitize($_GET['username']);
         $code = sanitize($_GET['verificationcode']);
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
         if ($row['username'] == $username && $row['verificationcode'] == $code) {
             if ($row['user_status'] == 'registered') {
                 header("Location: ../login/login.php?login=registered");

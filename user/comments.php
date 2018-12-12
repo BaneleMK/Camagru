@@ -10,7 +10,8 @@ if (!isset($_SESSION['username'])) {
 <html>
     <head>
         <title>Trender-comments</title>
-        <link rel="stylesheet" href="../css/mystyles.css">      
+        <link rel="stylesheet" href="../css/mystyles.css">
+        <meta charset="UTF-8">
     </head>
     <body bgcolor=red>
         <nv>
@@ -42,10 +43,10 @@ if (!isset($_SESSION['username'])) {
                         
                         $post = $_GET['post'];
 
-                        $query = $conn->prepare("SELECT * FROM posts WHERE id = $post ");
-                        $query->execute();
+                        $stmt = $conn->prepare("SELECT * FROM posts WHERE id = $post ");
+                        $stmt->execute();
 
-                        $row = $query->fetch();
+                        $row = $stmt->fetch();
                         echo '
                         <div class="postflexbox">
                             <table>
@@ -62,7 +63,7 @@ if (!isset($_SESSION['username'])) {
                             </table>
                         </div>
                         <div class="commentflexbox">
-                            <form action="commentinfo.php?post=' . $row['id'] . '&comments " method=POST id="commentform">
+                            <form action="commentinfo.php?post=' . $row['id'] . '&comments " method=POST id="commentform" accept-charset="UTF-8">
                                     <table class=table>
                                             <tr>
                                                 <td><h3>Comment</h3></td>
@@ -75,12 +76,12 @@ if (!isset($_SESSION['username'])) {
                             </form>
                         </div>';
 
-                        $query = $conn->prepare("SELECT * FROM user_comments WHERE postid = $post");
-                        $query->execute();
+                        $stmt = $conn->prepare("SELECT * FROM user_comments WHERE postid = $post");
+                        $stmt->execute();
 
                         echo '
                         <div class="commentflexbox" style="height:650">';
-                        while ($com = $query->fetch()) {
+                        while ($com = $stmt->fetch()) {
                             echo '<div class="commentflexbox" style="height:50px ; width=90%;background-color: #EEEEEE;">
                         ' . $com['username'] . ': ' . $com['comment_text'] . '
                             </div>';

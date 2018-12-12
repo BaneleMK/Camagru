@@ -61,10 +61,10 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
     }, false);
 
     camshot.addEventListener('click', function(event){
+        event.preventDefault();
         takepic();
         // this following DOM function prevents the default of an element 
         // from happening e.g link from following url or submit from submiting form
-        event.preventDefault();
     }, false)
 
     function takepic() {
@@ -87,4 +87,5 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
             // this is just adding the image to an array of imgaes
             //photos.appendChild(img);
         }
+        event.preventDefault();
     }

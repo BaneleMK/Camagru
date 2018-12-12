@@ -18,12 +18,13 @@
             //echo $postid . '<br>' . $username . '<br>' . $comment_text . '<br>';
             
             $sql = "INSERT INTO user_comments (username, comment_text, postid) VALUES ('$username', '$comment_text', '$postid')";
-            $conn->query($sql);
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
             //get current comment num and add one to it
-            $query = $conn->prepare("SELECT * FROM posts WHERE id = $postid");
-            $query->execute();
-            $row = $query->fetch();
+            $stmt = $conn->prepare("SELECT * FROM posts WHERE id = $postid");
+            $stmt->execute();
+            $row = $stmt->fetch();
 
             $newcomments = $row['comments'] + 1;
             $postusername = $row['username'];
@@ -34,9 +35,9 @@
 
             //inform the user if its notification is on
 
-            $query = $conn->prepare("SELECT * FROM users WHERE username = '$postusername'");
-            $query->execute();
-            $row = $query->fetch();
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username = '$postusername'");
+            $stmt->execute();
+            $row = $stmt->fetch();
 
             $email = $row['email'];
             if ($row['comment_notifications'] != 'OFF') {
@@ -55,7 +56,9 @@
             echo 'madeit';
             exit();
         } catch (PDOException $e) {
-            echo "failed: " . $e->getMessage() . "<br>";
+            //echo "failed: " . $e->getMessage() . "<br>";
+            header("Location: comments.php?post=" . $postid . "&error");
+            exit();
         }
     } else {
         header("Location: ../login/login.php?");

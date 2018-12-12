@@ -9,21 +9,24 @@
             $postid = sanitize($_GET['post']);
             $username = sanitize($_SESSION['username']);
             
-            $query = $conn->prepare("SELECT * FROM posts WHERE id = $postid");
-            $query->execute();
-            $row = $query->fetch();
+            $stmt = $conn->prepare("SELECT * FROM posts WHERE id = $postid");
+            $stmt->execute();
+            $row = $stmt->fetch();
 
-            $query = $conn->query("SELECT COUNT(*) FROM likes WHERE postid = $postid AND username = '$username'");
+            $stmt = $conn->prepare("SELECT COUNT(*) FROM likes WHERE postid = $postid AND username = '$username'");
+            $stmt->execute();
 
-            if ($query->fetchcolumn() > 0) {
+            if ($stmt->fetchcolumn() > 0) {
                 $newlikes = $row['likes'] - 1;
                 if ($newlikes < 0) {
                     $newlikes = 0;
                 }
-                $conn->query("DELETE FROM likes WHERE postid = $postid AND username = '$username'");
+                $conn->prepare("DELETE FROM likes WHERE postid = $postid AND username = '$username'");
+                $stmt->execute();
             } else {
                 $newlikes = $row['likes'] + 1;
-                $conn->query("INSERT INTO likes (postid, username) VALUES ($postid, '$username')");
+                $stmt = $conn->prepare("INSERT INTO likes (postid, username) VALUES ($postid, '$username')");
+                $stmt->execute();
             }
 
             $sql = "UPDATE posts SET likes = $newlikes WHERE id = $postid";
@@ -32,21 +35,11 @@
             header("Location: comments.php?post=" . $postid);
             exit();
         } catch (PDOException $e) {
-            echo "failed: " . $e->getMessage() . "<br>";
+            //echo "failed: " . $e->getMessage() . "<br>";
+            header("Location: comments.php?post=" . $postid ."&error");
+            exit();
         }
     } else {
         header("Location: ../login/login.php?");
         exit();
     }
-
-    /*
-    The code for the comments
-
-    else if (isset($_GET['comments'])) {
-                //$comment = $_POST['comment'];
-                $comment = "is the comment the issue";
-                //$conn->query("INSERT INTO likes (postid, username) VALUES ($postid, '$username')");
-                $conn->query("INSERT INTO comments (username, postid, comment) VALUES ('$username', $postid, '$comment')");
-                header("Location: ../index.php?workscomm");
-                exit();
-            }*/

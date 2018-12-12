@@ -7,9 +7,9 @@
 
     if (isset($_POST['submit'])) {
         $username = $_SESSION['username'];
-        $query = $conn->prepare("SELECT * FROM users WHERE username='$username'");
-        $query->execute();
-        $row = $query->fetch();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username='$username'");
+        $stmt->execute();
+        $row = $stmt->fetch();
         if (sanitize($_POST['password']) != sanitize($_POST['password_vr'])){
             require_once("../login/logout.php");    
             header("Location: resetpassword.php?signup=pwderror");

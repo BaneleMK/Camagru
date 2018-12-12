@@ -1,4 +1,5 @@
 <?php
+    echo "got here";
     if (isset($_POST['submit'])) {
         require_once("../functions/sanitize.php");
         require_once("../config/setup.php");
@@ -57,27 +58,32 @@
                     exit();
                 }
                 try {
-                    $sql = "INSERT INTO users (username, password, email, firstname, lastname, verificationcode) VALUES ('$username', '$password', '$email', '$firstname', '$lastname', '$verificationcode')";
-                    if ($conn->query($sql) === FALSE) {
-                        echo "New record was unsuccessful<br>";
-                    }
-                    else {
-                        echo "New record created successfully<br>";
-                    }
+                    $sql = "INSERT INTO users (username, password, email, firstname, lastname, verificationcode) 
+                    VALUES (:username, :password, :email, :firstname, :lastname, :verificationcode)";
+                    $stmt = $conn->prepare("$sql");
+
+                    $stmt->bindParam(':username', $username);
+                    $stmt->bindParam(':password', $password);
+                    $stmt->bindParam(':email', $email);
+                    $stmt->bindParam(':firstname', $firstname);
+                    $stmt->bindParam(':lastname', $lastname);
+                    $stmt->bindParam(':verificationcode', $verificationcode);
+                    $stmt->execute();
                 } catch(PDOException $e) {
                     header("Location: signup.php?signup=faulty");
                     exit();
                 }
                 $email_messaage = "
+                Eyyy $firstname $lastname
+
                 The following link will verify your account and allow you to go online.
                http://localhost:8080/Camagru/signup/email_verification.php?username=$username&verificationcode=$verificationcode
                 ";
                 // Multi.Ordinary.Noob.Develop.Etc MAILINATOR.com
                 mail($email, "Trender - confirm Email", $email_messaage,"From: Trendernoreply.com");
             }
-            //http://localhost:8080/Camagru/email_verification.php?username=banex&verificationcode=6326569
-            //echo "$username<br>$password<br>$email<br>$firstname<br><br>";
             header("Location: signup.php?signup=Successfulcreation");
+            exit();
         }
     } else {
         header("Location: ../index.php?");

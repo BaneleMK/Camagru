@@ -36,9 +36,9 @@ session_start();
                         require_once('../config/setup.php');
 
                         $user = $_SESSION['username'];
-                        $query = $conn->prepare("SELECT * FROM posts WHERE username = '$user'");
-                        $query->execute();
-                        $row = $query->fetchAll();
+                        $stmt = $conn->prepare("SELECT * FROM posts WHERE username = '$user'");
+                        $stmt->execute();
+                        $row = $stmt->fetchAll();
 
                         // $postnumber = the amount of posts per pagination
                         $postnumber = 5;

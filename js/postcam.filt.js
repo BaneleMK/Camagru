@@ -66,7 +66,6 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
 
     camshot.addEventListener('click', function(event){
         takepic();
-        document.getElementById("picmethod").innerHTML = "<video id=video>There was an error in getting the camera feed.<br></video>";
         // this following DOM function prevents the default of an element 
         // from happening e.g link from following url or submit from submiting form
         event.preventDefault();
