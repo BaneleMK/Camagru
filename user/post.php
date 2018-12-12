@@ -138,6 +138,25 @@ if (!isset($_SESSION['username'])) {
                         include '../messages/phpboxmessages.php';
                     ?>
                 </div>
+                <div class="thumbnailflexbox">
+                    <?php
+                        require_once('../config/setup.php');
+
+                        $user = $_SESSION['username'];
+                        $stmt = $conn->prepare("SELECT * FROM posts WHERE username = '$user' ORDER BY id DESC");
+                        $stmt->execute();
+                        $row = $stmt->fetchAll();
+
+                        // $postnumber = the amount of posts per pagination
+                        $totalposts = sizeof($row);
+                        for ($cp = 0; $cp < $totalposts; $cp++) {
+                            echo '
+                            <a href="comments.php?post=' . $row[$cp]['id'] . '">
+                                <img src="../uploads/' . $row[$cp]['picture'] . '" width=60 height=60>
+                            </a>';
+                        }
+                    ?>
+                </div>
                 <script src="../js/postcam.js"></script>
             </form>
             </div>   

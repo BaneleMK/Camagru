@@ -161,6 +161,21 @@
         justify-content: center;
         float: left;
     }
+    .thumbnailflexbox{
+        border-radius: 1px;
+        border: #25323b solid thin;
+        display: flex;
+        background-color: #AAAAAA;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 90%;
+        height: 70px;
+        align-items: center;
+        justify-content: center;
+        overflow-x: auto;
+        border-radius: 1px;
+        float: left;
+    }
 
     .campicflexbox{
         border-radius: 1px;
