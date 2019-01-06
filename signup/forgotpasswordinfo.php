@@ -42,7 +42,7 @@
                     http://localhost:8080/Camagru/signup/resetverification.php?username=$username&code=$code
                     
                     Thank you for using this site.
-                    The Boss.
+                    The Store Mananger.
                     ";
 
                     mail($email, "Trender - PASSWORD RESET", $email_message, "From: Trender");

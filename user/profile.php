@@ -41,86 +41,47 @@ if (!isset($_SESSION['username'])) {
                         <form action="profileinfo.php" method="POST">
                             <hr/>
                             <table class=table>
-                                <tr>
-                                    <td>new username:</td>
-                                    <td><input type="text" name="newusername" required></td>
+                                </tr>
+                                    <td>Gender:</td>
+                                    <td><select name="sexuality">
+                                        <option value="Other">Other</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select></td>
                                 </tr>
                                 <tr>
-                                    <td>password:</td>
-                                    <td><input type="password" name="password" required></td>
+                                    <td>Sexuality</td>
+                                    <td><select name="sexuality">
+                                        <option value="biosexual">Biosexual</option>
+                                        <option value="homosexual">Homosexual</option>
+                                        <option value="hetrosexual">Hetrosexual</option>
+                                    </select></td>
                                 </tr>
                                 <tr>
-                                    <td><button type="submit" name="submit">SUBMIT</button></td>
-                                </tr>
-                            </table>
-                        </form>
-                        <form action="profileinfo.php" method="POST">
-                            <hr/>
-                            <table class=table>
-                                <tr>
-                                    <td>old password:</td>
-                                    <td><input type="password" name="oldpassword" required></td>
+                                    <td>Location</td>
+                                    <td><input type="text" name="location" required></td>
                                 </tr>
                                 <tr>
-                                    <td>new password:</td>
-                                    <td><input type="password" name="newpassword" required></td>
+                                    <td>Tag-1</td>
+                                    <td><input type="text" name="tags1" value="Empty" required></td>
                                 </tr>
                                 <tr>
-                                    <td>new password verification:</td>
-                                    <td><input type="password" name="newpassword_vr" required></td>
+                                    <td>Tag-2</td>
+                                    <td><input type="text" name="tags2" value="Empty" required></td>
                                 </tr>
                                 <tr>
-                                    <td><button type="submit" name="submit">SUBMIT</button></td>
-                                </tr>
-                            </table>
-                        </form>
-                        <form action="profileinfo.php" method="POST">
-                            <hr/>
-                            <table class=table>
-                                <tr>
-                                    <td>new email:</td>
-                                    <td><input type="text" name="newemail" required></td>
+                                    <td>Tag-3</td>
+                                    <td><input type="text" name="tags3" value="Empty" required></td>
                                 </tr>
                                 <tr>
-                                    <td>password:</td>
-                                    <td><input type="password" name="password" required></td>
+                                    <td>Tag-4</td>
+                                    <td><input type="text" name="tags4" value="Empty" required></td>
                                 </tr>
                                 <tr>
-                                    <td><button type="submit" name="submit">SUBMIT</button></td>
+                                    <td>Tag-5</td>
+                                    <td><input type="text" name="tags5" value="Empty" required></td>
                                 </tr>
-                            </table>
-                        </form>
-                        <form action="profileinfo.php" method="POST">
-                            <hr/>
-                            <table class=table>
-                                <tr>
-                                    <td>email comment notification:</td>
-                                    <td>
-                                        <?php
-                                            require_once("../config/setup.php");
-                                            $username = $_SESSION['username'];
-                                            $stmt = $conn->prepare("SELECT * FROM users WHERE username ='$username'");
-                                            $stmt->execute();
-                                            $row = $stmt->fetch();
 
-                                            echo 'current status: '. $row['comment_notifications'];
-
-                                            if ($row['comment_notifications'] != 'OFF') {
-                                                echo '
-                                                    <select name="comment_notifications">
-                                                        <option value="ON">ON</option>
-                                                        <option value="OFF">OFF</option>
-                                                    </select>';
-                                            } else {
-                                                echo '
-                                                    <select name="comment_notifications">
-                                                        <option value="OFF">OFF</option>
-                                                        <option value="ON">ON</option>
-                                                    </select>';
-                                            }
-                                        ?>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td><button type="submit" name="submit">SUBMIT</button></td>
                                 </tr>

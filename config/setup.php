@@ -10,7 +10,7 @@
         //echo "Connected successfully to database<br>";
     }
     catch(PDOException $e) {
-        //echo "Connection failed: " . $e->getMessage() . "<br>";
+        echo "Connection failed: " . $e->getMessage() . "<br>";
     }
 
     try {
@@ -24,42 +24,50 @@
                 email VARCHAR(255) NOT NULL,
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL,
+                gender VARCHAR(30) NOT NULL DEFAULT 'Other',
+                profilelocation VARCHAR(100),
+                reallocation VARCHAR(100),
+                sexuality VARCHAR(15) NOT NULL DEFAULT 'Bisexual',
+                Fame INT(7) UNSIGNED,
+                Age INT(3) UNSIGNED,
+                profilepic INT(1) UNSIGNED,
                 user_state VARCHAR(30) NOT NULL DEFAULT 'unregistered',
                 comment_notifications VARCHAR(4) NOT NULL DEFAULT 'ON',
-                verificationcode INT(7) NOT NULL
+                verificationcode INT(7) UNSIGNED NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
         
         $conn->exec($sql);
         //echo "User table created successfully<br>";
 
-        $sql = "CREATE TABLE IF NOT EXISTS posts (
-            id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(30) NOT NULL,
-            picture TEXT NOT NULL,
-            likes INT(10) UNSIGNED DEFAULT 0,
-            comments INT(10) UNSIGNED DEFAULT 0
-        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
-
-        $conn->exec($sql);
-        //echo "Post table created successfully<br>";
-
-        $sql = "CREATE TABLE IF NOT EXISTS user_comments (
-            id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            postid INT(7) UNSIGNED NOT NULL,
-            username VARCHAR(30) NOT NULL,
-            comment_text VARCHAR(255) NOT NULL 
+        $sql = "CREATE TABLE IF NOT EXISTS tags (
+            userid INT(7) UNSIGNED NOT NULL PRIMARY KEY,
+            tag1 VARCHAR(20) NOT NULL DEFAULT 'empty',
+            tag2 VARCHAR(20) NOT NULL DEFAULT 'empty',
+            tag3 VARCHAR(20) NOT NULL DEFAULT 'empty',
+            tag4 VARCHAR(20) NOT NULL DEFAULT 'empty',
+            tag5 VARCHAR(20) NOT NULL DEFAULT 'empty'
         ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
     
         $conn->exec($sql);
-        //echo "comments table created successfully<br>";
+        //echo "tag table created successfully<br>";
 
-        $sql = "CREATE TABLE IF NOT EXISTS likes (
-            postid INT(7) UNSIGNED NOT NULL,
-            username VARCHAR(30) NOT NULL
+        $sql = "CREATE TABLE IF NOT EXISTS messages (
+            messageid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            senderid INT(7) UNSIGNED NOT NULL,
+            receiverid INT(7) UNSIGNED NOT NULL,
+            textmessage VARCHAR(255) NOT NULL 
         ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
     
         $conn->exec($sql);
-        //echo "likes table created successfully<br>";
+        //echo "messages table created successfully<br>";
+
+        $sql = "CREATE TABLE IF NOT EXISTS profilelikes (
+            userid INT(7) UNSIGNED NOT NULL,
+            likerid INT(7) UNSIGNED NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
+    
+        $conn->exec($sql);
+        //echo "profilelikes table created successfully<br>";
     }
     catch(PDOException $e) {
         echo "Table creation failed: " . $e->getMessage() . "<br>";
