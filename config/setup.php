@@ -61,6 +61,13 @@
         $conn->exec($sql);
         //echo "messages table created successfully<br>";
 
+        $sql = "CREATE TABLE IF NOT EXISTS chatmatch (
+            id1 INT(7) UNSIGNED NOT NULL,
+            id2 INT(7) UNSIGNED NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin";
+    
+        $conn->exec($sql);
+
         $sql = "CREATE TABLE IF NOT EXISTS profilelikes (
             userid INT(7) UNSIGNED NOT NULL,
             likerid INT(7) UNSIGNED NOT NULL

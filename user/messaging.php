@@ -16,7 +16,6 @@ if (!isset($_SESSION['username'])) {
     <body bgcolor=red>
         <nv>
             <nvli style="float: left;"><a href="../index.php">Home</a></nvli>
-            
         </nv>
         <div class="mainbox">
             <div class="subbox">
