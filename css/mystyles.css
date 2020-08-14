@@ -19,7 +19,7 @@
         display: flex;
         background-color: #FFFFFF;
         flex-direction: row;
-        width: 97%;
+        width: 84%;
         height: 920px;
         align-items: center;
         justify-content: center;
@@ -161,7 +161,6 @@
         justify-content: center;
         float: left;
     }
-    
     .thumbnailflexbox{
         border-radius: 1px;
         border: #25323b solid thin;
