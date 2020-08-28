@@ -25,7 +25,7 @@ WAMP - windows
 
 LAMP - Linux
 
-sendmail - free open source software for mail transfer
+sendmail - free open source software for mail transfer (usually comes pre-installed in unix and separate in windows)
 
 # Installing
 
