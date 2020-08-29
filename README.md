@@ -100,3 +100,24 @@ Camagru ->
 # Test Outline
 
 https://github.com/wethinkcode-students/corrections_42_curriculum/blob/master/camagru.markingsheet.pdf
+
+## Tests ran and expected results when replicating
+
+### preliminary checks
+* Usage of php -> checking the backend source code should show that the code is written in PHP
+* No external frameworks -> checking the backend source code should show there is no framework accessed through any part of the code
+* config/database.php exist -> you should be able to navigate to it and should contain database info
+* config/setup.php exist -> you should be able to navigate to it and should contain database creation code.
+* PDO is created -> by checking config/setup.php you should be able to verify this.
+
+### Starting the webserver
+* you should be able to start your webserver and navigate to specified browser url on my readme and reach the landing page for my website
+
+### Create an account and login
+* you should be able navigate to the account creation page, receive an email then be able to login.
+
+### webcam
+* you should be able to see a webcam feed after you allow camagru to access your webcam.
+
+### Change user credentials
+* you should be able to change any particular chosen user credential and re login to verify.
