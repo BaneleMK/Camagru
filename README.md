@@ -40,7 +40,9 @@ sendmail - free open source software for mail transfer (usually comes pre-instal
 
 * Start both the MySQL Database and Apache Web Server
 
-* On browser visit the "https://localhost/camagru/config/setup.php" to create the database. then everything should be set
+* Highlight the apache web server and press config to get your port number
+
+* On browser visit the " [localhost:(your apache web server port number)/camagru/config/setup.php] " to create the database. then everything should be set
 
 # File structure
 
