@@ -19,7 +19,9 @@ CSS - Front end webpage appearance
 Bitnami Apache Servers to host on and mysql
 valid choices
 
-MAMP - mac
+[https://bitnami.com/stacks](Bitnami website to download the web server stack with installation documentation)
+
+MAMP - mac 
 
 WAMP - windows
 
